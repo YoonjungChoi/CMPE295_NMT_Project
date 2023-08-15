@@ -19,4 +19,50 @@
 ![image](https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/78391f09-8c89-442b-82ab-16d0fb48d0f3)
 
 
-# 
+## HPC Usages - 
+
+SJSU HPC Access Instructions => https://www.sjsu.edu/cmpe/resources/hpc.php
+
+1. request HPC account and access through Professor
+2. install VPN Connection
+3. connect via terminal
+ ```
+   ssh SJSU_ID@coe-hpc.sjsu.edu
+ ```
+4. command list
+  ```
+    sbatch run.sh
+    ssh g4 'nvidia-smi'
+    module load python3
+  ```
+5. script
+```
+#!/bin/bash
+
+#SBATCH --job-name=**YOURS**
+#SBATCH --output=**YOURS**
+#SBATCH --ntasks=1
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=12
+#SBATCH --time=2-00:00:00
+#SBATCH --mem-per-cpu=32000
+#SBATCH --mail-user=**YOURS**
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --partition=gpu
+
+echo ':: Start ::'
+source ~/.bashrc
+module load anaconda/3.9
+module load cuda12.0
+'''
+write things
+''''
+echo ':: End ::'
+```
+
+
+
+
+
+
