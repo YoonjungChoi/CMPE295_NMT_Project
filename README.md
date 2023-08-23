@@ -1,5 +1,5 @@
 # CMPE295_NMT_Project
-
+[Document](https://docs.google.com/document/d/1Tm7Ttn58zOEZKsSziA-wT1ZTithQNs6O/edit?usp=sharing&ouid=118008271487839144751&rtpof=true&sd=true)
 - Literature Search, State of the Art
 - Project Justification
 - Identify Baseline Approaches
@@ -12,14 +12,18 @@
 
 ## Architecture
 
-[Diagram](https://drive.google.com/file/d/1M_D2lVIAyuQwGH5OIrTGJxaz1VKl94gw/view?usp=sharing)
+[all diagrams have done here](https://drive.google.com/file/d/1M_D2lVIAyuQwGH5OIrTGJxaz1VKl94gw/view?usp=sharing)
 
-![image](https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/048e6b35-b3fe-4396-99b3-fba2f9c5c9a7)
+System Architecture
 
-![image](https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/78391f09-8c89-442b-82ab-16d0fb48d0f3)
+<img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/048e6b35-b3fe-4396-99b3-fba2f9c5c9a7" width="500"/>
+
+Machine Learning Architecture
+
+<img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/78391f09-8c89-442b-82ab-16d0fb48d0f3" width="500"/>
 
 
-## HPC Usages - 
+## HPC Usages 
 
 SJSU HPC Access Instructions => https://www.sjsu.edu/cmpe/resources/hpc.php
 
