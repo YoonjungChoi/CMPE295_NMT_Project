@@ -65,7 +65,42 @@ write things
 echo ':: End ::'
 ```
 
+## Web Applicationn
 
+React Frontend
+
+```
+npx create-react-app cmpe298b-project
+cd cmpe298b-project
+npm start
+
+npm install axios
+npm audit fix --force
+npm install @material-ui/core 
+npm install @mui/material
+```
+
+Django Backend 
+
+```
+python3 -m vent .venv
+
+(base) ➜  drinks . .venv/bin/activate
+(.venv) (base) ➜  drinks pip install django
+(.venv) (base) ➜  drinks pip install djangorestframework
+(.venv) (base) ➜  drinks django-admin startproject drinks .
+(.venv) (base) ➜  drinks python manage.py runserver
+
+(base) ➜  drinks . .venv/bin/activate
+(.venv) (base) ➜  drinks python manage.py migrate
+(.venv) (base) ➜  drinks python manage.py createsuperuser
+Username (leave blank to use 'yoonjung'): admin
+Email address: admin@email.com
+Password: admin
+
+python -m pip install django-cors-headers
+//POSTMAN should be ON.
+```
 
 
 
