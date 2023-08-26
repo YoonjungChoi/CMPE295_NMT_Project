@@ -67,6 +67,9 @@ echo ':: End ::'
 
 ## Web Applicationn
 
+<img width="500" alt="Screen Shot 2023-08-25 at 8 17 20 PM" src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/31efeba0-57f5-4049-810c-3a3267f7528d">
+
+
 React Frontend
 
 ```
