@@ -1,0 +1,38 @@
+.HomeMain {
+    background-color: white;
+    color: #5F6366;
+    height: 1500px;
+    font-size: calc(10px + 2vmin);
+    text-align: center;
+    align-items: center;
+}
+.HomeSection {
+    background-color: #EDB5BF;
+    height: 10px;
+}
+
+.HomeSubOneTitle {
+    background-color: #86B3D1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.HomeSubOne {
+    background-color: #86B3D1;
+    height: 200px;
+}
+
+.HomeSubTwoTitle {
+    background-color: #DAAD86;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.HomeSubTwo {
+    background-color: #DAAD86;
+    height: 200px;
+}
+#div-inner {
+    margin-left: 20px;
+    margin-right: 20px;
+}
