@@ -123,7 +123,12 @@ Email address: admin@email.com
 Password: admin
 
 python -m pip install django-cors-headers
-//POSTMAN should be ON.
+#POSTMAN should be ON.
+
+(.venv) (base) ➜  drinks pip install pyonmttok
+(.venv) (base) ➜  drinks pip install tensorflow
+
+
 ```
 
 
