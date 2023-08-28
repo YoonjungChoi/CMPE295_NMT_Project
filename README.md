@@ -65,6 +65,27 @@ write things
 echo ':: End ::'
 ```
 
+## OpenNMT-tf toolkit
+doc link - https://opennmt.net/OpenNMT-tf/
+
+```
+#training
+$ onmt-main --model_type Transformer --config enko.yaml --auto_config train --with_eval --num_gpus 4
+
+#use GPU
+$ export CUDA_VISIBLE_DEVICES=0,1,2,3
+
+#inference
+$ onmt-main --config enko.yaml --auto_config --checkpoint_path run/avg/ckpt-300000 infer --features_file ../../data/test.tok.en --predictions_file pred.tok.avg.ko
+
+#serving - tflite, servings
+# increase beam width up to 5, and export average model
+
+$ onmt-main --config koen.yaml --auto_config average_checkpoints --output_dir run/baseline/avg --max_count 8
+$ onmt-main --config enkoExport.yaml --auto_config export --output_dir ./export-tflite/
+
+```
+
 ## Web Application Demo for Project EXPO
 
 <img width="500" alt="Screen Shot 2023-08-25 at 8 17 20 PM" src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/31efeba0-57f5-4049-810c-3a3267f7528d">
