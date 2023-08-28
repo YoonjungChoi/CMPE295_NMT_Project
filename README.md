@@ -23,6 +23,16 @@ Machine Learning Architecture
 <img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/78391f09-8c89-442b-82ab-16d0fb48d0f3" width="500"/>
 
 
+
+Transformer Architecture
+
+
+
+**PDF BOOK “Speech and Language Processing”**
+Available: at [this link](https://web.stanford.edu/~jurafsky/slp3/ed3book_jan122022.pdf)
+
+
+
 ## HPC Usages 
 
 SJSU HPC Access Instructions => https://www.sjsu.edu/cmpe/resources/hpc.php
