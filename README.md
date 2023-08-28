@@ -86,12 +86,35 @@ $ onmt-main --config enkoExport.yaml --auto_config export --output_dir ./export-
 
 ```
 
+## HuggingFace used for inference, Back Translation (for data augmentation)
+
+Collect Mono lingual dataset 
+
+1. download - WMT En-De dataset 
+```
+4562102 wmt.en
+4520346 wmtclean.en  (remove HTTP stuff)
+```
+2. download Korean dataset
+```
+(base) ➜  FINAL wc -l *.ko
+  294049 konlp.test.ko
+ 5293998 konlp.train.ko
+  294049 konlp.valid.ko
+ 5,882,096 total
+```
+
+3. inference
+
+[HuggingFace EnKo/KoEn model] (https://github.com/QuoQA-NLP/T5_Translation) - inference to make synthetic dataset
+
+
+
 ## Web Application Demo for Project EXPO
 
-<img width="500" alt="Screen Shot 2023-08-25 at 8 17 20 PM" src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/31efeba0-57f5-4049-810c-3a3267f7528d">
+<img width="500" alt="screen shot" src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/62f15c6b-b5de-4bdd-9fe9-f437b6904de1">
 
-
-React Frontend
+**React Frontend**
 
 ```
 npx create-react-app cmpe298b-project
@@ -104,7 +127,7 @@ npm install @material-ui/core
 npm install @mui/material
 ```
 
-Django Backend 
+**Django Backend**
 
 ```
 python3 -m vent .venv
@@ -127,7 +150,7 @@ python -m pip install django-cors-headers
 
 (.venv) (base) ➜  drinks pip install pyonmttok
 (.venv) (base) ➜  drinks pip install tensorflow
-
+(.venv) (base) ➜  drinks pip install urllib3==1.26.6
 
 ```
 
