@@ -4,8 +4,10 @@ from .serializer import DrinkSerializer, TranslationSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from drinks import yoonFuncs
 from datetime import datetime
+
+from drinks import OWLTrans
+#from OwlTranslation import OwlTranslation
 
 @api_view(['GET', 'POST'])
 def drink_list(request):
@@ -44,15 +46,21 @@ def drink_detail(request, id):
 @api_view(['POST'])
 def doTranslation(request) :
     print("LOG doTranslation is called with ", request.data)
-    
-    yoonFuncs.printFunc()
+    #yoonFuncs.printFunc()
     #result = onmtModel.translate(request.data['src'], request.data['srcText'])
-
     request.data['timeStamp'] = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    request.data['tgtText'] = "디폴트"
-    #request.data['tgtText'] = result
-    print(request.data)
 
+    result = ""
+    if request.data['src']=='ko' and request.data['tgt']=='en':
+        result = OWLTrans.translateKoEn([request.data['srcText']])
+
+    elif request.data['src'] == 'en' and request.data['tgt']=='ko':
+        print("[LOG] if en and ko")
+        result = OWLTrans.translateEnKo([request.data['srcText']])
+
+    print("[LOG result]", result)    
+    request.data['tgtText'] = result[0]
+    print(request.data)
 
     if request.method=='POST':
         serializer = TranslationSerializer(data=request.data)
