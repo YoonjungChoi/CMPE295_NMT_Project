@@ -118,7 +118,18 @@ Collect Mono lingual dataset
 
 [HuggingFace EnKo/KoEn model] (https://github.com/QuoQA-NLP/T5_Translation) - inference to make synthetic dataset
 
+4. Test about Idioms
 
+```
+list_data = ["I will play it by ear.", "I've got butterflies in my stomach.", "The crowd went bananas when the concert began.", "When pigs fly", "I used to get butterflies in my stomach before the tests.", "Things quickly went south when my phone got hacked."]
+
+['나는 그것을 귀로 연주할 것입니다.',
+ '저는 배에 나비가 생겼어요.',
+ '콘서트가 시작되자 관중들은 바나나를 먹었다.',
+ '돼지가 날아가면 돼지가 날아든다.',
+ '나는 시험 전에 배에서 나비를 당하기도 했어요.',
+ '내 핸드폰이 해킹을 당하자 상황이 빠르게 남갔다.']
+```
 
 ## Web Application Demo for Project EXPO
 
