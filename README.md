@@ -1,5 +1,5 @@
 # CMPE295_NMT_Project
-[Document](https://docs.google.com/document/d/1Tm7Ttn58zOEZKsSziA-wT1ZTithQNs6O/edit?usp=sharing&ouid=118008271487839144751&rtpof=true&sd=true)
+[Google Share Document](https://docs.google.com/document/d/1Tm7Ttn58zOEZKsSziA-wT1ZTithQNs6O/edit?usp=sharing&ouid=118008271487839144751&rtpof=true&sd=true)
 - Literature Search, State of the Art
 - Project Justification
 - Identify Baseline Approaches
@@ -10,7 +10,7 @@
 - Implementation Plan and Progress
 - Project Schedule
 
-## Architecture
+## 1. Architecture
 
 [all diagrams have done here](https://drive.google.com/file/d/1M_D2lVIAyuQwGH5OIrTGJxaz1VKl94gw/view?usp=sharing)
 
@@ -33,7 +33,7 @@ Available: at [this link](https://web.stanford.edu/~jurafsky/slp3/ed3book_jan122
 
 
 
-## HPC Usages 
+## 2. HPC Usages 
 
 SJSU HPC Access Instructions => https://www.sjsu.edu/cmpe/resources/hpc.php
 
@@ -75,7 +75,7 @@ write things
 echo ':: End ::'
 ```
 
-## OpenNMT-tf toolkit
+## 3. Create our own Model with OpenNMT-tf toolkit
 doc link - https://opennmt.net/OpenNMT-tf/
 
 ```
@@ -96,7 +96,7 @@ $ onmt-main --config enkoExport.yaml --auto_config export --output_dir ./export-
 
 ```
 
-## HuggingFace used for inference, Back Translation (for data augmentation)
+### 3.1 Data Augmentation with existing HuggingFaceSeqToSeqLM for inference, Back Translation
 
 Collect Mono lingual dataset 
 
@@ -130,6 +130,14 @@ list_data = ["I will play it by ear.", "I've got butterflies in my stomach.", "T
  '나는 시험 전에 배에서 나비를 당하기도 했어요.',
  '내 핸드폰이 해킹을 당하자 상황이 빠르게 남갔다.']
 ```
+
+## 4. Create "Idiom-centric data augmentation Model" by using pretrained-model.
+
+**(Problem/Solution)** Existing translation models cannot translate “idiom” expression. Also, We cannot use other models for back-translation to create additional synthetic datasets in case of idioms. To solve this problem, First, we need to collect idiom datasets. Second, we can fine-tune and optimize pretrained models to be available for idiom expressions. Third, this models can be used for idioms centric data augmentation between Korean and English. We want to focus on “Idiom-Centric Data Augmentation Models”.
+
+
+
+
 
 ## Web Application Demo for Project EXPO
 
