@@ -1,4 +1,4 @@
-# CMPE295_NMT_Project
+# CMPE295_NMT_Project: Idiom-centric data augmentation model on NMT Between Korean and Englsih
 [Google Share Document](https://docs.google.com/document/d/1Tm7Ttn58zOEZKsSziA-wT1ZTithQNs6O/edit?usp=sharing&ouid=118008271487839144751&rtpof=true&sd=true)
 - Literature Search, State of the Art
 - Project Justification
