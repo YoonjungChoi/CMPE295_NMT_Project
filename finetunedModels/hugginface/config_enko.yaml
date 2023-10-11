@@ -4,9 +4,9 @@ CFG:
   valid_batch_size: 128
 
   # Train configuration
-  num_epochs: 2  # validation loss is increasing after 5 epochs
+  num_epochs:  10  # validation loss is increasing after 5 epochs
   num_checkpoints: 3
-  max_token_length: 256
+  max_token_length: 512
   stopwords: []
   learning_rate: 0.0005 # has to be set as float explicitly due to https://stackoverflow.com/questions/30458977/yaml-loads-5e-6-as-string-and-not-a-number
   weight_decay: 0.01 # https://paperswithcode.com/method/weight-decay
@@ -32,7 +32,7 @@ CFG:
   src_language: "en"
   tgt_language: "ko"
   model_name: "QuoQA-NLP/KE-T5-En2Ko-Base"
-  num_inference_sample: 5000
+  num_inference_sample: 120
   dropout: 0.1
 
   # root path
