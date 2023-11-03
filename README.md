@@ -284,6 +284,9 @@ python -m pip install django-cors-headers
 
 ```
 
+[[CMPE295B] Poster.pptx.pdf](https://github.com/YoonjungChoi/CMPE295_NMT_Project/files/13255406/CMPE295B.Poster.pptx.pdf)
+
+
 
 
 
