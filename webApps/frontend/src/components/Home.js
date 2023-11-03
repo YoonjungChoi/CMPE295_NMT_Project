@@ -37,7 +37,7 @@ class Home extends React.Component{
     e.preventDefault();
     console.log("LOG-doTranslationEnKo", this.state.srcEn);
     this.setState({
-      tgtKo: this.state.srcEn
+      tgtKo: "..."
     });
     this.request = { src: "en", tgt: "ko", srcText: this.state.srcEn};
     axios.post(
@@ -54,8 +54,10 @@ class Home extends React.Component{
   doTranslationKoEn = (e) => {
     e.preventDefault();
     console.log("LOG-doTranslationKoEn");
-
-    this.request = { src: "ko", tgt: "en", srcText: this.state.srcKo};
+    this.setState({
+      tgtEn: "..."
+    });
+    this.request = { src: "ko", tgt: "en", srcText:this.state.srcKo };
     axios.post(
         "http://127.0.0.1:8000/doTranslation/",
         this.request
