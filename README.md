@@ -82,7 +82,7 @@ echo ':: End ::'
 
 We collected dataset Netflix, Ted, Kaggle, Tatoeba, WMT, KoNLP, or website so on.
 
-This [file](https://github.com/YoonjungChoi/CMPE295_NMT_Project/blob/main/fromScratchModels/data_preprocessing/Collected_Dataset_Information.pdf) indicate all sources information.
+This [file](https://github.com/YoonjungChoi/CMPE295_NMT_Project/blob/main/fromScratchModels/data_preprocessing/Collected_Dataset_Information.pdf) indicates all source information.
 
 **Data Augmentation with existing HuggingFaceSeqToSeqLM for inference, Back Translation** 
 
