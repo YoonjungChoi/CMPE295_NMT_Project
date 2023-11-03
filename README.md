@@ -12,25 +12,26 @@
 
 ## 1. Architecture
 
+**REFER PDF BOOK “Speech and Language Processing”**
+Available: at [this link](https://web.stanford.edu/~jurafsky/slp3/ed3book_jan122022.pdf)
+
 [all diagrams have done here](https://drive.google.com/file/d/1M_D2lVIAyuQwGH5OIrTGJxaz1VKl94gw/view?usp=sharing)
 
 System Architecture
 
 <img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/048e6b35-b3fe-4396-99b3-fba2f9c5c9a7" width="500"/>
 
-Machine Learning Architecture
+Machine Learning Architecture From Scrath
 
 <img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/78391f09-8c89-442b-82ab-16d0fb48d0f3" width="500"/>
 
+Machine Learning Architecture Fine-tuning From LLM
 
+![295A_SystemArchitectureLLM](https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/6d08f56e-8651-4187-b726-aed215c00fb3)
 
 Transformer Architecture
 
-
-
-**PDF BOOK “Speech and Language Processing”**
-Available: at [this link](https://web.stanford.edu/~jurafsky/slp3/ed3book_jan122022.pdf)
-
+!<img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/b7701922-20b4-4259-8fcb-f5258266e1ba" width="500" />
 
 
 ## 2. HPC Usages 
@@ -134,9 +135,6 @@ list_data = ["I will play it by ear.", "I've got butterflies in my stomach.", "T
 ## 4. Create "Idiom-centric data augmentation Model" by using pretrained-model.
 
 **(Problem/Solution)** Existing translation models cannot translate “idiom” expression. Also, We cannot use other models for back-translation to create additional synthetic datasets in case of idioms. To solve this problem, First, we need to collect idiom datasets. Second, we can fine-tune and optimize pretrained models to be available for idiom expressions. Third, this models can be used for idioms centric data augmentation between Korean and English. We want to focus on “Idiom-Centric Data Augmentation Models”.
-
-
-
 
 
 ## Web Application Demo for Project EXPO
