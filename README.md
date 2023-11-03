@@ -17,19 +17,19 @@ Available: at [this link](https://web.stanford.edu/~jurafsky/slp3/ed3book_jan122
 
 [all diagrams have done here](https://drive.google.com/file/d/1M_D2lVIAyuQwGH5OIrTGJxaz1VKl94gw/view?usp=sharing)
 
-System Architecture
+1.1. Web-based System Architecture
 
 <img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/048e6b35-b3fe-4396-99b3-fba2f9c5c9a7" width="500"/>
 
-Machine Learning Architecture From Scrath
+1.2. Machine Learning based Architecture from Scrath
 
 <img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/78391f09-8c89-442b-82ab-16d0fb48d0f3" width="500"/>
 
-Machine Learning Architecture Fine-tuning From LLM
+1.3. Machine Learning based Architecture from fine-tuning based on LLM
 
 ![295A_SystemArchitectureLLM](https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/6d08f56e-8651-4187-b726-aed215c00fb3)
 
-Transformer Architecture
+1.4. Transformer Architecture
 
 !<img src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/b7701922-20b4-4259-8fcb-f5258266e1ba" width="500" />
 
@@ -76,8 +76,54 @@ write things
 echo ':: End ::'
 ```
 
-## 3. Create our own Model with OpenNMT-tf toolkit
-doc link - https://opennmt.net/OpenNMT-tf/
+## 3. Scratch Model with OpenNMT-tf toolkit
+
+### 3.1 Data Collection
+
+We collected dataset Netflix, Ted, Kaggle, Tatoeba, WMT, KoNLP, or website so on.
+
+This [file](https://github.com/YoonjungChoi/CMPE295_NMT_Project/blob/main/fromScratchModels/data_preprocessing/Collected_Dataset_Information.pdf) indicate all sources information.
+
+**Data Augmentation with existing HuggingFaceSeqToSeqLM for inference, Back Translation** 
+
+Collect Mono lingual dataset
+
+> 1.1 download - WMT En-De dataset having total 4,520,346 lines
+```
+4,562,102 wmt.en
+4,520,346 wmtclean.en  (remove HTTP stuff)
+```
+> 1.2 download Korean dataset havinf total  5,882,096 lines
+```
+(base) ➜  FINAL wc -l *.ko
+  294049 konlp.test.ko
+ 5293998 konlp.train.ko
+  294049 konlp.valid.ko
+```
+
+> 2. inference
+
+[HuggingFace EnKo/KoEn model](https://github.com/QuoQA-NLP/T5_Translation) - inference to make synthetic dataset
+
+
+The last dataset number of lines
+```
+    557778 test.tok.en
+    557778 test.tok.ko
+  10041133 train.tok.en
+  10041133 train.tok.ko
+    557778 valid.tok.en
+    557778 valid.tok.ko
+```
+
+A total of 11,156,689 lines were collected and divided into 95% for training and 5% for validation and testing. 
+
+
+### 3.2 Training, Experiments Commands
+
+Doc link - https://opennmt.net/OpenNMT-tf/
+
+Sentence Piece Scripts [file](https://github.com/YoonjungChoi/CMPE295_NMT_Project/blob/main/fromScratchModels/script/hpc/sentencepiece_script.sh)
 
 ```
 #training
@@ -91,53 +137,110 @@ $ onmt-main --config enko.yaml --auto_config --checkpoint_path run/avg/ckpt-3000
 
 #serving - tflite, servings
 # increase beam width up to 5, and export average model
-
 $ onmt-main --config koen.yaml --auto_config average_checkpoints --output_dir run/baseline/avg --max_count 8
 $ onmt-main --config enkoExport.yaml --auto_config export --output_dir ./export-tflite/
 
+#tokenization
+$ spm_encode --model=spenD.model < raw/train.ko > data/train.tok.ko
+
+#detokenization
+$ spm_decode --model=spenD.model --input_format=piece < pred.tok.avg.en > pred.tok.avg.en.detok
+
+#evaluation BLEU score
+$ sacrebleu raw_test.en < pred.tok.en.avg.detok
+$ sacrebleu raw_test.en < pred.tok.en.avg.detok --metrics chrf
 ```
 
-### 3.1 Data Augmentation with existing HuggingFaceSeqToSeqLM for inference, Back Translation
+### 3.3 Scores
 
-Collect Mono lingual dataset 
+Whenever we collected enough dataset, we trained and evaluated models.
 
-1. download - WMT En-De dataset 
-```
-4562102 wmt.en
-4520346 wmtclean.en  (remove HTTP stuff)
-```
-2. download Korean dataset
-```
-(base) ➜  FINAL wc -l *.ko
-  294049 konlp.test.ko
- 5293998 konlp.train.ko
-  294049 konlp.valid.ko
- 5,882,096 total
-```
+Scores are all recorded at this [file-scores](https://github.com/YoonjungChoi/CMPE295_NMT_Project/blob/main/fromScratchModels/data_preprocessing/scores.pdf)
 
-3. inference
+We start training models with Transformer architecture using OpenNMT Toolkit with parameters; beam width, early stopping conditions, maximum lengths so on. 
 
-[HuggingFace EnKo/KoEn model] (https://github.com/QuoQA-NLP/T5_Translation) - inference to make synthetic dataset
+The final models are averaged from the last 8 models.
 
-4. Test about Idioms
+| 557,778 testset  | En To Ko | Ko To En |
+|------------------|----------|----------|
+| Bleu Score       |   34.4   |   40.2   |
 
-```
-list_data = ["I will play it by ear.", "I've got butterflies in my stomach.", "The crowd went bananas when the concert began.", "When pigs fly", "I used to get butterflies in my stomach before the tests.", "Things quickly went south when my phone got hacked."]
 
-['나는 그것을 귀로 연주할 것입니다.',
- '저는 배에 나비가 생겼어요.',
- '콘서트가 시작되자 관중들은 바나나를 먹었다.',
- '돼지가 날아가면 돼지가 날아든다.',
- '나는 시험 전에 배에서 나비를 당하기도 했어요.',
- '내 핸드폰이 해킹을 당하자 상황이 빠르게 남갔다.']
-```
+Due to limitations in the quality of the dataset, our scratch models are saturated in the scores 35~40. Also, for the record, this dataset includes unbalanced data between general bitext and idiom bitext.
 
-## 4. Create "Idiom-centric data augmentation Model" by using pretrained-model.
+The existing other models have obtained higher scores up to 45, so we would rather use them as a baseline model. 
+
+## 4. Fine-tuned model based on Huggingface Quoqa-NLP models.
 
 **(Problem/Solution)** Existing translation models cannot translate “idiom” expression. Also, We cannot use other models for back-translation to create additional synthetic datasets in case of idioms. To solve this problem, First, we need to collect idiom datasets. Second, we can fine-tune and optimize pretrained models to be available for idiom expressions. Third, this models can be used for idioms centric data augmentation between Korean and English. We want to focus on “Idiom-Centric Data Augmentation Models”.
 
 
-## Web Application Demo for Project EXPO
+### 4.1 Test about Idioms expression on baseline model
+
+```
+samples
+[ I will play it by ear, I've got butterflies in my stomach,
+The crowd went bananas when the concert began,
+Danny's family told him to “break a leg” right before he went up on stage,
+Things quickly went south when my phone got hacked,
+유유상종입니다,
+내 코가 석자다,
+진퇴양란이다,
+쥐구멍에도 볕 들 날 있다,
+영철이 완전 개천에서 용난 케이스야,
+식은 죽 먹기다 ] 
+
+are translated as
+
+[ 나는 그것을 귀로 연주할 것입니다,
+저는 배에 나비가 생겼어요,
+콘서트가 시작되자 관중들은 바나나를 먹었다,
+대니의 가족은 그가 무대에 오르기 직전에 “다리를 끊어라" 고 했다,
+내 핸드폰이 해킹을 당하자 상황이 빠르게 남갔다,
+It's Yuyusangjong,
+I can't help you because my nose is a stone,
+It's a dysphagia,
+There is a sun in the mouse hole, let's try hard,
+It's a case where Yeongchul is in a full stream,
+Food is eating porridge.] 
+```
+
+Baseline inference [results](https://github.com/YoonjungChoi/CMPE295_NMT_Project/blob/main/finetunedModels/hugginface/infer_results/baseline_infer_results.csv)
+
+### 4.2 Collect BiText of Idiom expression 
+
+Collected BiText Idioms from seaching and some websites [kaggle_scraping_idioms_english](https://www.kaggle.com/code/sohaelshafey/english-idioms-from-url-to-csv), [800_most_commonly_used_idioms_englsih](https://www.academia.edu/11281938/The_800_Most_Commonly_Used_Idioms_in_America)
+
+saved in [here-dataset](https://github.com/YoonjungChoi/CMPE295_NMT_Project/tree/main/finetunedModels/hugginface/data)
+
+### 4.3 Train with finetuning and Evaluation
+
+The baseline models show their performance on the Idiom test set. The English to Korean model shows a score of 7.81 and the Korean to English model shows a score of 17.45.
+From this baseline models, we fine-tuned the models by optimizing the hyperparameters with 10 epochs, 5 beam widths, 512 maximum token lengths, 1.3 repetition penalty, 3 repetition ngram size, Adam as the optimization algorithm, 2 gradient accumulation, and 64 batch size for the train. Base on the Idiom test set, the English to Korean model shows a score of 16.98 and the Korean to English model shows a score of 32.72.
+
+| 120 testset | En To Ko | Ko To En |
+|-------------|----------|----------|
+| Baseline    |   7.81   |   17.45  |
+| Finetuned   |   16.98  |   32.72  |
+
+
+```
+Fine-tuned models inference results:
+[ 제가 유동적으로 조정할 것입니다,
+가슴이 두근두근합니다,
+콘서트가 시작했을 때 군중은 열광했습니다,
+대니의 가족은 그가 무대에 오르기 직전 그에게 “대박나라”고 말했습니다,
+제 전화기가 해킹당했을 때 상황이 빠르게 악화되었습니다,
+Birds of a feather flock together.,
+I have my own fish to fry,
+It's between the devil and the deep blue sea,
+Every dog has his day,
+Youngchul is a case of rags to riches,
+It's a piece of cake.]
+```
+
+
+## 5 Web Application Demo for Project EXPO
 
 <img width="500" alt="screen shot" src="https://github.com/YoonjungChoi/CMPE295_NMT_Project/assets/20979517/62f15c6b-b5de-4bdd-9fe9-f437b6904de1">
 
