@@ -6,7 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from datetime import datetime
 
-from drinks import OWLTrans
+#from drinks import OWLTrans
+from drinks import HFTrans
 #from OwlTranslation import OwlTranslation
 
 @api_view(['GET', 'POST'])
@@ -52,11 +53,13 @@ def doTranslation(request) :
 
     result = ""
     if request.data['src']=='ko' and request.data['tgt']=='en':
-        result = OWLTrans.translateKoEn([request.data['srcText']])
+        result = HFTrans.translateKoEn([request.data['srcText']])
+        #result = OWLTrans.translateKoEn([request.data['srcText']])
 
     elif request.data['src'] == 'en' and request.data['tgt']=='ko':
-        print("[LOG] if en and ko")
-        result = OWLTrans.translateEnKo([request.data['srcText']])
+        #print("[LOG] if en and ko")
+        result = HFTrans.translateEnKo([request.data['srcText']])
+        #result = OWLTrans.translateEnKo([request.data['srcText']])
 
     print("[LOG result]", result)    
     request.data['tgtText'] = result[0]
