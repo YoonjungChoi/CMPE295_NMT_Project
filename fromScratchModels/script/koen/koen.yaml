@@ -1,0 +1,22 @@
+model_dir: run/
+
+data:
+  train_features_file: ../../data/train.tok.ko
+  train_labels_file: ../../data/train.tok.en
+  eval_features_file: ../../data/valid.tok.ko
+  eval_labels_file: ../../data/valid.tok.en
+  source_vocabulary: ../../data/spkoD.onmt.vocab
+  target_vocabulary: ../../data/spenD.onmt.vocab
+
+train:
+  maximum_features_length: 150
+  maximum_labels_length: 150
+
+eval:
+  scorers: bleu
+  export_on_best: bleu
+  export_format: saved_model
+  early_stopping:
+    metric: bleu
+    min_improvement: 0.01
+    steps: 4

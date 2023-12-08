@@ -1,0 +1,1086 @@
+:: Start ::
+Loading cudnn8.1-cuda11.2/8.1.1.33
+  Loading requirement: cuda11.2/toolkit/11.2.2
+Loading nccl2-cuda11.2-gcc9/2.14.3
+  Loading requirement: gcc9/9.5.0
+2023-05-18 21:20:32.385989: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-18 21:20:32.514356: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-05-18 21:20:39.971631: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /cm/shared/apps/nccl2-cuda11.2-gcc9/2.14.3/lib:/cm/shared/apps/gcc9/9.5.0/lib:/cm/shared/apps/gcc9/9.5.0/lib32:/cm/shared/apps/gcc9/9.5.0/lib64:/cm/shared/apps/cuda12.0/toolkit/12.0.1/targets/x86_64-linux/lib:/cm/shared/apps/cudnn8.1-cuda11.2/8.1.1.33/lib64:/cm/local/apps/cuda/libs/current/lib64:/cm/shared/apps/cuda11.2/toolkit/11.2.2/targets/x86_64-linux/lib:/cm/shared/apps/anaconda/3.9/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64
+2023-05-18 21:20:39.972422: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /cm/shared/apps/nccl2-cuda11.2-gcc9/2.14.3/lib:/cm/shared/apps/gcc9/9.5.0/lib:/cm/shared/apps/gcc9/9.5.0/lib32:/cm/shared/apps/gcc9/9.5.0/lib64:/cm/shared/apps/cuda12.0/toolkit/12.0.1/targets/x86_64-linux/lib:/cm/shared/apps/cudnn8.1-cuda11.2/8.1.1.33/lib64:/cm/local/apps/cuda/libs/current/lib64:/cm/shared/apps/cuda11.2/toolkit/11.2.2/targets/x86_64-linux/lib:/cm/shared/apps/anaconda/3.9/lib:/cm/shared/apps/slurm/current/lib64/slurm:/cm/shared/apps/slurm/current/lib64
+2023-05-18 21:20:39.972431: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2023-05-18 21:20:47.960000: I main.py:315] Using OpenNMT-tf version 2.31.0
+2023-05-18 21:20:47.960000: I main.py:315] Using model:
+(model): TransformerBase(
+  (examples_inputter): SequenceToSequenceInputter(
+    (features_inputter): WordEmbedder()
+    (labels_inputter): WordEmbedder()
+    (inputters): ListWrapper(
+      (0): WordEmbedder()
+      (1): WordEmbedder()
+    )
+  )
+  (encoder): SelfAttentionEncoder(
+    (position_encoder): SinusoidalPositionEncoder(
+      (reducer): SumReducer()
+    )
+    (layer_norm): LayerNorm()
+    (layers): ListWrapper(
+      (0): SelfAttentionEncoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (1): SelfAttentionEncoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (2): SelfAttentionEncoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (3): SelfAttentionEncoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (4): SelfAttentionEncoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (5): SelfAttentionEncoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+    )
+  )
+  (decoder): SelfAttentionDecoder(
+    (position_encoder): SinusoidalPositionEncoder(
+      (reducer): SumReducer()
+    )
+    (layer_norm): LayerNorm()
+    (layers): ListWrapper(
+      (0): SelfAttentionDecoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (attention): ListWrapper(
+          (0): TransformerLayerWrapper(
+            (layer): MultiHeadAttention(
+              (linear_queries): Dense(512)
+              (linear_keys): Dense(512)
+              (linear_values): Dense(512)
+              (linear_output): Dense(512)
+            )
+            (input_layer_norm): LayerNorm()
+          )
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (1): SelfAttentionDecoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (attention): ListWrapper(
+          (0): TransformerLayerWrapper(
+            (layer): MultiHeadAttention(
+              (linear_queries): Dense(512)
+              (linear_keys): Dense(512)
+              (linear_values): Dense(512)
+              (linear_output): Dense(512)
+            )
+            (input_layer_norm): LayerNorm()
+          )
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (2): SelfAttentionDecoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (attention): ListWrapper(
+          (0): TransformerLayerWrapper(
+            (layer): MultiHeadAttention(
+              (linear_queries): Dense(512)
+              (linear_keys): Dense(512)
+              (linear_values): Dense(512)
+              (linear_output): Dense(512)
+            )
+            (input_layer_norm): LayerNorm()
+          )
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (3): SelfAttentionDecoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (attention): ListWrapper(
+          (0): TransformerLayerWrapper(
+            (layer): MultiHeadAttention(
+              (linear_queries): Dense(512)
+              (linear_keys): Dense(512)
+              (linear_values): Dense(512)
+              (linear_output): Dense(512)
+            )
+            (input_layer_norm): LayerNorm()
+          )
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (4): SelfAttentionDecoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (attention): ListWrapper(
+          (0): TransformerLayerWrapper(
+            (layer): MultiHeadAttention(
+              (linear_queries): Dense(512)
+              (linear_keys): Dense(512)
+              (linear_values): Dense(512)
+              (linear_output): Dense(512)
+            )
+            (input_layer_norm): LayerNorm()
+          )
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+      (5): SelfAttentionDecoderLayer(
+        (self_attention): TransformerLayerWrapper(
+          (layer): MultiHeadAttention(
+            (linear_queries): Dense(512)
+            (linear_keys): Dense(512)
+            (linear_values): Dense(512)
+            (linear_output): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+        (attention): ListWrapper(
+          (0): TransformerLayerWrapper(
+            (layer): MultiHeadAttention(
+              (linear_queries): Dense(512)
+              (linear_keys): Dense(512)
+              (linear_values): Dense(512)
+              (linear_output): Dense(512)
+            )
+            (input_layer_norm): LayerNorm()
+          )
+        )
+        (ffn): TransformerLayerWrapper(
+          (layer): FeedForwardNetwork(
+            (inner): Dense(2048)
+            (outer): Dense(512)
+          )
+          (input_layer_norm): LayerNorm()
+        )
+      )
+    )
+  )
+)
+
+2023-05-18 21:20:47.962784: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-05-18 21:20:49.829145: I tensorflow/core/common_runtime/gpu/gpu_process_state.cc:222] Using CUDA malloc Async allocator for GPU: 0
+2023-05-18 21:20:49.829484: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38378 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:17:00.0, compute capability: 8.0
+2023-05-18 21:20:49.830054: I tensorflow/core/common_runtime/gpu/gpu_process_state.cc:222] Using CUDA malloc Async allocator for GPU: 1
+2023-05-18 21:20:49.830134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38378 MB memory:  -> device: 1, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:65:00.0, compute capability: 8.0
+2023-05-18 21:20:49.830507: I tensorflow/core/common_runtime/gpu/gpu_process_state.cc:222] Using CUDA malloc Async allocator for GPU: 2
+2023-05-18 21:20:49.830564: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38378 MB memory:  -> device: 2, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:ca:00.0, compute capability: 8.0
+2023-05-18 21:20:49.830993: I tensorflow/core/common_runtime/gpu/gpu_process_state.cc:222] Using CUDA malloc Async allocator for GPU: 3
+2023-05-18 21:20:49.831050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38378 MB memory:  -> device: 3, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:e3:00.0, compute capability: 8.0
+2023-05-18 21:20:49.836000: I main.py:325] Using parameters:
+data:
+  eval_features_file: ../../data/valid.tok.en
+  eval_labels_file: ../../data/valid.tok.ko
+  source_vocabulary: ../../data/spenD.onmt.vocab
+  target_vocabulary: ../../data/spkoD.onmt.vocab
+  train_features_file: ../../data/train.tok.en
+  train_labels_file: ../../data/train.tok.ko
+eval:
+  batch_size: 32
+  batch_type: examples
+  early_stopping:
+    metric: bleu
+    min_improvement: 0.01
+    steps: 4
+  export_format: saved_model
+  export_on_best: bleu
+  length_bucket_width: 5
+  scorers: bleu
+infer:
+  batch_size: 32
+  batch_type: examples
+  length_bucket_width: 5
+model_dir: run/
+params:
+  average_loss_in_time: true
+  beam_width: 4
+  decay_params:
+    model_dim: 512
+    warmup_steps: 8000
+  decay_type: NoamDecay
+  label_smoothing: 0.1
+  learning_rate: 2.0
+  num_hypotheses: 1
+  optimizer: LazyAdam
+  optimizer_params:
+    beta_1: 0.9
+    beta_2: 0.998
+score:
+  batch_size: 64
+  batch_type: examples
+  length_bucket_width: 5
+train:
+  average_last_checkpoints: 8
+  batch_size: 3072
+  batch_type: tokens
+  effective_batch_size: 25000
+  keep_checkpoint_max: 8
+  length_bucket_width: 2
+  max_step: 500000
+  maximum_features_length: 150
+  maximum_labels_length: 150
+  sample_buffer_size: -1
+  save_summary_steps: 100
+
+2023-05-18 21:20:50.037000: I inputter.py:316] Initialized source input layer:
+2023-05-18 21:20:50.037000: I inputter.py:316]  - vocabulary size: 32001
+2023-05-18 21:20:50.037000: I inputter.py:316]  - special tokens: BOS=no, EOS=no
+2023-05-18 21:20:50.118000: I inputter.py:316] Initialized target input layer:
+2023-05-18 21:20:50.118000: I inputter.py:316]  - vocabulary size: 32001
+2023-05-18 21:20:50.118000: I inputter.py:316]  - special tokens: BOS=yes, EOS=yes
+2023-05-18 21:20:50.317000: I runner.py:268] Restored checkpoint run/ckpt-275000
+2023-05-18 21:20:50.694000: W deprecation.py:350] From /home/013907062/.conda/envs/env_onmttf/lib/python3.8/site-packages/tensorflow/python/summary/summary_iterator.py:27: tf_record_iterator (from tensorflow.python.lib.io.tf_record) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use eager execution and: 
+`tf.data.TFRecordDataset(path)`
+2023-05-18 21:20:50.763000: W deprecation.py:350] From /home/013907062/.conda/envs/env_onmttf/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2023-05-18 21:20:51.600967: I tensorflow/core/grappler/optimizers/data/replicate_on_split.cc:32] Running replicate on split optimization
+2023-05-18 21:20:51.709000: I main.py:325] Accumulate gradients of 3 iterations to reach effective batch size of 25000
+2023-05-18 21:20:51.725000: I mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0', '/job:localhost/replica:0/task:0/device:GPU:1', '/job:localhost/replica:0/task:0/device:GPU:2', '/job:localhost/replica:0/task:0/device:GPU:3')
+2023-05-18 21:20:53.728000: I dataset_ops.py:2542] Training on 10041133 examples
+2023-05-18 21:21:04.459018: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 4859184 of 10041133
+2023-05-18 21:21:14.459039: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 9035675 of 10041133
+2023-05-18 21:21:17.033860: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:417] Shuffle buffer filled.
+2023-05-18 21:23:07.790188: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8101
+2023-05-18 21:23:08.357444: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8101
+2023-05-18 21:23:08.976675: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2023-05-18 21:23:09.216797: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8101
+2023-05-18 21:23:09.938683: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8101
+2023-05-18 21:23:25.398000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:25.423000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:29.464000: I cross_device_ops.py:897] batch_all_reduce: 260 all-reduces with algorithm = nccl, num_packs = 1
+2023-05-18 21:23:38.029000: I cross_device_ops.py:897] batch_all_reduce: 260 all-reduces with algorithm = nccl, num_packs = 1
+2023-05-18 21:23:51.796000: I runner.py:309] Number of model parameters: 93326081
+2023-05-18 21:23:51.800000: I runner.py:309] Number of model weights: 260 (trainable = 260, non trainable = 0)
+2023-05-18 21:23:51.841000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:51.850000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:52.190000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:52.221000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:52.470000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:52.478000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:52.722000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:23:52.730000: I cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-05-18 21:24:16.715000: I runner.py:309] Step = 275100 ; steps/s = 4.03, tokens/s = 263153 (136512 source, 126641 target) ; Learning rate = 0.000169 ; Loss = 2.712953
+2023-05-18 21:24:41.514000: I runner.py:309] Step = 275200 ; steps/s = 4.03, tokens/s = 262943 (136719 source, 126224 target) ; Learning rate = 0.000168 ; Loss = 2.601461
+2023-05-18 21:25:06.479000: I runner.py:309] Step = 275300 ; steps/s = 4.01, tokens/s = 261250 (135843 source, 125407 target) ; Learning rate = 0.000168 ; Loss = 2.519408
+2023-05-18 21:25:31.461000: I runner.py:309] Step = 275400 ; steps/s = 4.00, tokens/s = 261010 (135736 source, 125274 target) ; Learning rate = 0.000168 ; Loss = 2.638327
+2023-05-18 21:25:56.441000: I runner.py:309] Step = 275500 ; steps/s = 4.00, tokens/s = 260974 (135733 source, 125241 target) ; Learning rate = 0.000168 ; Loss = 2.677078
+2023-05-18 21:26:21.275000: I runner.py:309] Step = 275600 ; steps/s = 4.03, tokens/s = 262477 (136570 source, 125907 target) ; Learning rate = 0.000168 ; Loss = 2.592386
+2023-05-18 21:26:45.772000: I runner.py:309] Step = 275700 ; steps/s = 4.08, tokens/s = 266032 (138414 source, 127618 target) ; Learning rate = 0.000168 ; Loss = 2.591310
+2023-05-18 21:27:10.340000: I runner.py:309] Step = 275800 ; steps/s = 4.07, tokens/s = 265402 (138009 source, 127393 target) ; Learning rate = 0.000168 ; Loss = 2.579250
+2023-05-18 21:27:34.910000: I runner.py:309] Step = 275900 ; steps/s = 4.07, tokens/s = 265515 (137924 source, 127591 target) ; Learning rate = 0.000168 ; Loss = 2.698588
+2023-05-18 21:27:59.531000: I runner.py:309] Step = 276000 ; steps/s = 4.06, tokens/s = 264675 (137730 source, 126945 target) ; Learning rate = 0.000168 ; Loss = 2.604891
+2023-05-18 21:28:24.025000: I runner.py:309] Step = 276100 ; steps/s = 4.08, tokens/s = 266188 (138484 source, 127704 target) ; Learning rate = 0.000168 ; Loss = 2.617980
+2023-05-18 21:28:48.290000: I runner.py:309] Step = 276200 ; steps/s = 4.12, tokens/s = 268678 (139751 source, 128927 target) ; Learning rate = 0.000168 ; Loss = 2.706314
+2023-05-18 21:29:12.763000: I runner.py:309] Step = 276300 ; steps/s = 4.09, tokens/s = 266428 (138504 source, 127924 target) ; Learning rate = 0.000168 ; Loss = 2.497661
+2023-05-18 21:29:37.300000: I runner.py:309] Step = 276400 ; steps/s = 4.08, tokens/s = 265502 (138288 source, 127214 target) ; Learning rate = 0.000168 ; Loss = 2.524647
+2023-05-18 21:30:02.066000: I runner.py:309] Step = 276500 ; steps/s = 4.04, tokens/s = 263301 (136901 source, 126400 target) ; Learning rate = 0.000168 ; Loss = 2.633732
+2023-05-18 21:30:26.791000: I runner.py:309] Step = 276600 ; steps/s = 4.05, tokens/s = 263719 (137177 source, 126542 target) ; Learning rate = 0.000168 ; Loss = 2.584655
+2023-05-18 21:30:51.525000: I runner.py:309] Step = 276700 ; steps/s = 4.04, tokens/s = 263563 (137100 source, 126463 target) ; Learning rate = 0.000168 ; Loss = 2.438645
+2023-05-18 21:31:15.753000: I runner.py:309] Step = 276800 ; steps/s = 4.13, tokens/s = 269204 (139930 source, 129274 target) ; Learning rate = 0.000168 ; Loss = 2.582046
+2023-05-18 21:31:40.235000: I runner.py:309] Step = 276900 ; steps/s = 4.09, tokens/s = 266346 (138523 source, 127823 target) ; Learning rate = 0.000168 ; Loss = 2.723280
+2023-05-18 21:32:04.696000: I runner.py:309] Step = 277000 ; steps/s = 4.09, tokens/s = 266459 (138639 source, 127820 target) ; Learning rate = 0.000168 ; Loss = 2.591369
+2023-05-18 21:32:29.305000: I runner.py:309] Step = 277100 ; steps/s = 4.06, tokens/s = 264776 (137765 source, 127011 target) ; Learning rate = 0.000168 ; Loss = 2.626277
+2023-05-18 21:32:53.770000: I runner.py:309] Step = 277200 ; steps/s = 4.09, tokens/s = 266563 (138588 source, 127975 target) ; Learning rate = 0.000168 ; Loss = 2.565830
+2023-05-18 21:33:18.028000: I runner.py:309] Step = 277300 ; steps/s = 4.12, tokens/s = 268752 (139869 source, 128883 target) ; Learning rate = 0.000168 ; Loss = 2.588127
+2023-05-18 21:33:42.488000: I runner.py:309] Step = 277400 ; steps/s = 4.09, tokens/s = 266578 (138632 source, 127946 target) ; Learning rate = 0.000168 ; Loss = 2.549267
+2023-05-18 21:34:07.159000: I runner.py:309] Step = 277500 ; steps/s = 4.05, tokens/s = 264318 (137416 source, 126902 target) ; Learning rate = 0.000168 ; Loss = 2.557346
+2023-05-18 21:34:31.706000: I runner.py:309] Step = 277600 ; steps/s = 4.07, tokens/s = 265539 (138206 source, 127333 target) ; Learning rate = 0.000168 ; Loss = 2.595968
+2023-05-18 21:34:56.222000: I runner.py:309] Step = 277700 ; steps/s = 4.08, tokens/s = 265928 (138393 source, 127535 target) ; Learning rate = 0.000168 ; Loss = 2.572114
+2023-05-18 21:35:20.785000: I runner.py:309] Step = 277800 ; steps/s = 4.07, tokens/s = 265362 (138001 source, 127361 target) ; Learning rate = 0.000168 ; Loss = 2.564262
+2023-05-18 21:35:45.101000: I runner.py:309] Step = 277900 ; steps/s = 4.11, tokens/s = 267912 (139514 source, 128398 target) ; Learning rate = 0.000168 ; Loss = 2.628389
+2023-05-18 21:36:09.799000: I runner.py:309] Step = 278000 ; steps/s = 4.05, tokens/s = 264039 (137266 source, 126773 target) ; Learning rate = 0.000168 ; Loss = 2.599892
+2023-05-18 21:36:34.434000: I runner.py:309] Step = 278100 ; steps/s = 4.06, tokens/s = 264739 (137631 source, 127108 target) ; Learning rate = 0.000168 ; Loss = 2.524329
+2023-05-18 21:36:58.984000: I runner.py:309] Step = 278200 ; steps/s = 4.07, tokens/s = 265391 (138126 source, 127265 target) ; Learning rate = 0.000168 ; Loss = 2.493196
+2023-05-18 21:37:23.647000: I runner.py:309] Step = 278300 ; steps/s = 4.06, tokens/s = 264348 (137440 source, 126908 target) ; Learning rate = 0.000168 ; Loss = 2.660615
+2023-05-18 21:37:48.187000: I runner.py:309] Step = 278400 ; steps/s = 4.08, tokens/s = 265641 (138156 source, 127485 target) ; Learning rate = 0.000168 ; Loss = 2.629763
+2023-05-18 21:38:12.862000: I runner.py:309] Step = 278500 ; steps/s = 4.05, tokens/s = 264198 (137463 source, 126735 target) ; Learning rate = 0.000167 ; Loss = 2.566393
+2023-05-18 21:38:37.454000: I runner.py:309] Step = 278600 ; steps/s = 4.07, tokens/s = 265102 (137906 source, 127196 target) ; Learning rate = 0.000167 ; Loss = 2.459077
+2023-05-18 21:39:02.084000: I runner.py:309] Step = 278700 ; steps/s = 4.06, tokens/s = 264717 (137630 source, 127087 target) ; Learning rate = 0.000167 ; Loss = 2.688664
+2023-05-18 21:39:26.623000: I runner.py:309] Step = 278800 ; steps/s = 4.08, tokens/s = 265801 (138146 source, 127655 target) ; Learning rate = 0.000167 ; Loss = 2.444285
+2023-05-18 21:39:51.354000: I runner.py:309] Step = 278900 ; steps/s = 4.04, tokens/s = 263517 (137171 source, 126346 target) ; Learning rate = 0.000167 ; Loss = 2.583565
+2023-05-18 21:40:15.712000: I runner.py:309] Step = 279000 ; steps/s = 4.11, tokens/s = 267713 (139195 source, 128518 target) ; Learning rate = 0.000167 ; Loss = 2.531456
+2023-05-18 21:40:40.484000: I runner.py:309] Step = 279100 ; steps/s = 4.04, tokens/s = 263159 (136930 source, 126229 target) ; Learning rate = 0.000167 ; Loss = 2.541643
+2023-05-18 21:41:05.204000: I runner.py:309] Step = 279200 ; steps/s = 4.05, tokens/s = 263532 (137131 source, 126401 target) ; Learning rate = 0.000167 ; Loss = 2.558671
+2023-05-18 21:41:29.837000: I runner.py:309] Step = 279300 ; steps/s = 4.06, tokens/s = 264827 (137567 source, 127260 target) ; Learning rate = 0.000167 ; Loss = 2.496626
+2023-05-18 21:41:54.765000: I runner.py:309] Step = 279400 ; steps/s = 4.01, tokens/s = 261536 (136026 source, 125510 target) ; Learning rate = 0.000167 ; Loss = 2.661825
+2023-05-18 21:42:19.256000: I runner.py:309] Step = 279500 ; steps/s = 4.08, tokens/s = 266338 (138515 source, 127823 target) ; Learning rate = 0.000167 ; Loss = 2.374308
+2023-05-18 21:42:44.195000: I runner.py:309] Step = 279600 ; steps/s = 4.01, tokens/s = 261250 (136007 source, 125243 target) ; Learning rate = 0.000167 ; Loss = 2.548842
+2023-05-18 21:43:08.736000: I runner.py:309] Step = 279700 ; steps/s = 4.08, tokens/s = 265686 (138206 source, 127480 target) ; Learning rate = 0.000167 ; Loss = 2.665355
+2023-05-18 21:43:33.929000: I runner.py:309] Step = 279800 ; steps/s = 3.97, tokens/s = 258777 (134625 source, 124152 target) ; Learning rate = 0.000167 ; Loss = 2.553938
+2023-05-18 21:43:58.793000: I runner.py:309] Step = 279900 ; steps/s = 4.02, tokens/s = 262212 (136453 source, 125759 target) ; Learning rate = 0.000167 ; Loss = 2.572019
+2023-05-18 21:44:23.565000: I runner.py:309] Step = 280000 ; steps/s = 4.04, tokens/s = 263229 (136850 source, 126379 target) ; Learning rate = 0.000167 ; Loss = 2.767820
+2023-05-18 21:44:27.849000: I training.py:176] Saved checkpoint run/ckpt-280000
+2023-05-18 21:44:27.849000: I training.py:192] Running evaluation for step 280000
+2023-05-18 22:29:14.580000: I training.py:192] Evaluation predictions saved to run/eval/predictions.txt.280000
+2023-05-18 22:30:34.870000: I training.py:192] Evaluation result for step 280000: loss = 1.416755 ; perplexity = 4.123718 ; bleu = 38.425109
+2023-05-18 22:30:34.883000: I training.py:192] Exporting model to run/export/280000 (best bleu so far: 38.425109)
+WARNING:absl:Found untraced functions such as transformer_base_1_layer_call_fn, transformer_base_1_layer_call_and_return_conditional_losses, _forward_xla, sequence_to_sequence_inputter_1_layer_call_fn, sequence_to_sequence_inputter_1_layer_call_and_return_conditional_losses while saving (showing 5 of 423). These functions will not be directly callable after loading.
+2023-05-18 22:30:41.397000: I builder_impl.py:797] Assets written to: run/export/280000/assets
+INFO:tensorflow:Assets written to: run/export/280000/assets
+2023-05-18 22:31:07.393000: I runner.py:309] Step = 280100 ; steps/s = 3.96, tokens/s = 258011 (134186 source, 123825 target) ; Learning rate = 0.000167 ; Loss = 2.581145
+INFO:tensorflow:Step = 280100 ; steps/s = 3.96, tokens/s = 258011 (134186 source, 123825 target) ; Learning rate = 0.000167 ; Loss = 2.581145
+2023-05-18 22:31:32.601000: I runner.py:309] Step = 280200 ; steps/s = 3.97, tokens/s = 258785 (134518 source, 124267 target) ; Learning rate = 0.000167 ; Loss = 2.532973
+INFO:tensorflow:Step = 280200 ; steps/s = 3.97, tokens/s = 258785 (134518 source, 124267 target) ; Learning rate = 0.000167 ; Loss = 2.532973
+2023-05-18 22:31:57.843000: I runner.py:309] Step = 280300 ; steps/s = 3.96, tokens/s = 258105 (134292 source, 123813 target) ; Learning rate = 0.000167 ; Loss = 2.646822
+INFO:tensorflow:Step = 280300 ; steps/s = 3.96, tokens/s = 258105 (134292 source, 123813 target) ; Learning rate = 0.000167 ; Loss = 2.646822
+2023-05-18 22:32:22.883000: I runner.py:309] Step = 280400 ; steps/s = 4.00, tokens/s = 260279 (135399 source, 124880 target) ; Learning rate = 0.000167 ; Loss = 2.581188
+INFO:tensorflow:Step = 280400 ; steps/s = 4.00, tokens/s = 260279 (135399 source, 124880 target) ; Learning rate = 0.000167 ; Loss = 2.581188
+2023-05-18 22:32:47.677000: I runner.py:309] Step = 280500 ; steps/s = 4.03, tokens/s = 262994 (136863 source, 126131 target) ; Learning rate = 0.000167 ; Loss = 2.426051
+INFO:tensorflow:Step = 280500 ; steps/s = 4.03, tokens/s = 262994 (136863 source, 126131 target) ; Learning rate = 0.000167 ; Loss = 2.426051
+2023-05-18 22:33:01.856505: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 4867993 of 10041133
+2023-05-18 22:33:11.856497: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 9200370 of 10041133
+2023-05-18 22:33:14.105571: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:417] Shuffle buffer filled.
+2023-05-18 22:33:35.269000: I runner.py:309] Step = 280600 ; steps/s = 2.10, tokens/s = 132749 (69054 source, 63695 target) ; Learning rate = 0.000167 ; Loss = 2.488440
+INFO:tensorflow:Step = 280600 ; steps/s = 2.10, tokens/s = 132749 (69054 source, 63695 target) ; Learning rate = 0.000167 ; Loss = 2.488440
+2023-05-18 22:34:00.669000: I runner.py:309] Step = 280700 ; steps/s = 3.94, tokens/s = 256713 (133421 source, 123292 target) ; Learning rate = 0.000167 ; Loss = 2.612002
+INFO:tensorflow:Step = 280700 ; steps/s = 3.94, tokens/s = 256713 (133421 source, 123292 target) ; Learning rate = 0.000167 ; Loss = 2.612002
+2023-05-18 22:34:26.032000: I runner.py:309] Step = 280800 ; steps/s = 3.94, tokens/s = 257211 (133698 source, 123513 target) ; Learning rate = 0.000167 ; Loss = 2.520991
+INFO:tensorflow:Step = 280800 ; steps/s = 3.94, tokens/s = 257211 (133698 source, 123513 target) ; Learning rate = 0.000167 ; Loss = 2.520991
+2023-05-18 22:34:51.623000: I runner.py:309] Step = 280900 ; steps/s = 3.91, tokens/s = 254834 (132553 source, 122281 target) ; Learning rate = 0.000167 ; Loss = 2.457842
+INFO:tensorflow:Step = 280900 ; steps/s = 3.91, tokens/s = 254834 (132553 source, 122281 target) ; Learning rate = 0.000167 ; Loss = 2.457842
+2023-05-18 22:35:16.848000: I runner.py:309] Step = 281000 ; steps/s = 3.97, tokens/s = 258411 (134434 source, 123977 target) ; Learning rate = 0.000167 ; Loss = 2.609271
+INFO:tensorflow:Step = 281000 ; steps/s = 3.97, tokens/s = 258411 (134434 source, 123977 target) ; Learning rate = 0.000167 ; Loss = 2.609271
+2023-05-18 22:35:42.289000: I runner.py:309] Step = 281100 ; steps/s = 3.93, tokens/s = 256223 (133299 source, 122924 target) ; Learning rate = 0.000167 ; Loss = 2.545093
+INFO:tensorflow:Step = 281100 ; steps/s = 3.93, tokens/s = 256223 (133299 source, 122924 target) ; Learning rate = 0.000167 ; Loss = 2.545093
+2023-05-18 22:36:07.692000: I runner.py:309] Step = 281200 ; steps/s = 3.94, tokens/s = 256736 (133528 source, 123208 target) ; Learning rate = 0.000167 ; Loss = 2.510985
+INFO:tensorflow:Step = 281200 ; steps/s = 3.94, tokens/s = 256736 (133528 source, 123208 target) ; Learning rate = 0.000167 ; Loss = 2.510985
+2023-05-18 22:36:32.992000: I runner.py:309] Step = 281300 ; steps/s = 3.95, tokens/s = 257632 (134014 source, 123618 target) ; Learning rate = 0.000167 ; Loss = 2.558459
+INFO:tensorflow:Step = 281300 ; steps/s = 3.95, tokens/s = 257632 (134014 source, 123618 target) ; Learning rate = 0.000167 ; Loss = 2.558459
+2023-05-18 22:36:58.567000: I runner.py:309] Step = 281400 ; steps/s = 3.91, tokens/s = 254910 (132530 source, 122380 target) ; Learning rate = 0.000167 ; Loss = 2.639392
+INFO:tensorflow:Step = 281400 ; steps/s = 3.91, tokens/s = 254910 (132530 source, 122380 target) ; Learning rate = 0.000167 ; Loss = 2.639392
+2023-05-18 22:37:23.986000: I runner.py:309] Step = 281500 ; steps/s = 3.94, tokens/s = 256505 (133388 source, 123117 target) ; Learning rate = 0.000167 ; Loss = 2.614372
+INFO:tensorflow:Step = 281500 ; steps/s = 3.94, tokens/s = 256505 (133388 source, 123117 target) ; Learning rate = 0.000167 ; Loss = 2.614372
+2023-05-18 22:37:48.972000: I runner.py:309] Step = 281600 ; steps/s = 4.00, tokens/s = 260924 (135665 source, 125259 target) ; Learning rate = 0.000167 ; Loss = 2.618279
+INFO:tensorflow:Step = 281600 ; steps/s = 4.00, tokens/s = 260924 (135665 source, 125259 target) ; Learning rate = 0.000167 ; Loss = 2.618279
+2023-05-18 22:38:14.418000: I runner.py:309] Step = 281700 ; steps/s = 3.93, tokens/s = 256130 (133250 source, 122880 target) ; Learning rate = 0.000167 ; Loss = 2.563128
+INFO:tensorflow:Step = 281700 ; steps/s = 3.93, tokens/s = 256130 (133250 source, 122880 target) ; Learning rate = 0.000167 ; Loss = 2.563128
+2023-05-18 22:38:39.689000: I runner.py:309] Step = 281800 ; steps/s = 3.96, tokens/s = 258081 (134143 source, 123938 target) ; Learning rate = 0.000167 ; Loss = 2.554748
+INFO:tensorflow:Step = 281800 ; steps/s = 3.96, tokens/s = 258081 (134143 source, 123938 target) ; Learning rate = 0.000167 ; Loss = 2.554748
+2023-05-18 22:39:04.981000: I runner.py:309] Step = 281900 ; steps/s = 3.95, tokens/s = 257539 (134046 source, 123493 target) ; Learning rate = 0.000166 ; Loss = 2.544786
+INFO:tensorflow:Step = 281900 ; steps/s = 3.95, tokens/s = 257539 (134046 source, 123493 target) ; Learning rate = 0.000166 ; Loss = 2.544786
+2023-05-18 22:39:30.219000: I runner.py:309] Step = 282000 ; steps/s = 3.96, tokens/s = 258193 (134390 source, 123803 target) ; Learning rate = 0.000166 ; Loss = 2.656233
+INFO:tensorflow:Step = 282000 ; steps/s = 3.96, tokens/s = 258193 (134390 source, 123803 target) ; Learning rate = 0.000166 ; Loss = 2.656233
+2023-05-18 22:39:55.644000: I runner.py:309] Step = 282100 ; steps/s = 3.93, tokens/s = 256465 (133356 source, 123109 target) ; Learning rate = 0.000166 ; Loss = 2.549131
+INFO:tensorflow:Step = 282100 ; steps/s = 3.93, tokens/s = 256465 (133356 source, 123109 target) ; Learning rate = 0.000166 ; Loss = 2.549131
+2023-05-18 22:40:20.995000: I runner.py:309] Step = 282200 ; steps/s = 3.95, tokens/s = 257223 (133822 source, 123401 target) ; Learning rate = 0.000166 ; Loss = 2.606420
+INFO:tensorflow:Step = 282200 ; steps/s = 3.95, tokens/s = 257223 (133822 source, 123401 target) ; Learning rate = 0.000166 ; Loss = 2.606420
+2023-05-18 22:40:46.234000: I runner.py:309] Step = 282300 ; steps/s = 3.96, tokens/s = 258545 (134396 source, 124149 target) ; Learning rate = 0.000166 ; Loss = 2.573839
+INFO:tensorflow:Step = 282300 ; steps/s = 3.96, tokens/s = 258545 (134396 source, 124149 target) ; Learning rate = 0.000166 ; Loss = 2.573839
+2023-05-18 22:41:11.481000: I runner.py:309] Step = 282400 ; steps/s = 3.96, tokens/s = 258263 (134271 source, 123992 target) ; Learning rate = 0.000166 ; Loss = 2.636519
+INFO:tensorflow:Step = 282400 ; steps/s = 3.96, tokens/s = 258263 (134271 source, 123992 target) ; Learning rate = 0.000166 ; Loss = 2.636519
+2023-05-18 22:41:36.763000: I runner.py:309] Step = 282500 ; steps/s = 3.96, tokens/s = 257762 (134117 source, 123645 target) ; Learning rate = 0.000166 ; Loss = 2.670719
+INFO:tensorflow:Step = 282500 ; steps/s = 3.96, tokens/s = 257762 (134117 source, 123645 target) ; Learning rate = 0.000166 ; Loss = 2.670719
+2023-05-18 22:42:02.078000: I runner.py:309] Step = 282600 ; steps/s = 3.95, tokens/s = 257650 (133924 source, 123726 target) ; Learning rate = 0.000166 ; Loss = 2.662986
+INFO:tensorflow:Step = 282600 ; steps/s = 3.95, tokens/s = 257650 (133924 source, 123726 target) ; Learning rate = 0.000166 ; Loss = 2.662986
+2023-05-18 22:42:27.201000: I runner.py:309] Step = 282700 ; steps/s = 3.98, tokens/s = 259237 (135047 source, 124190 target) ; Learning rate = 0.000166 ; Loss = 2.458775
+INFO:tensorflow:Step = 282700 ; steps/s = 3.98, tokens/s = 259237 (135047 source, 124190 target) ; Learning rate = 0.000166 ; Loss = 2.458775
+2023-05-18 22:42:52.341000: I runner.py:309] Step = 282800 ; steps/s = 3.98, tokens/s = 259506 (134877 source, 124629 target) ; Learning rate = 0.000166 ; Loss = 2.665691
+INFO:tensorflow:Step = 282800 ; steps/s = 3.98, tokens/s = 259506 (134877 source, 124629 target) ; Learning rate = 0.000166 ; Loss = 2.665691
+2023-05-18 22:43:17.373000: I runner.py:309] Step = 282900 ; steps/s = 4.00, tokens/s = 260481 (135489 source, 124992 target) ; Learning rate = 0.000166 ; Loss = 2.581420
+INFO:tensorflow:Step = 282900 ; steps/s = 4.00, tokens/s = 260481 (135489 source, 124992 target) ; Learning rate = 0.000166 ; Loss = 2.581420
+2023-05-18 22:43:42.377000: I runner.py:309] Step = 283000 ; steps/s = 4.00, tokens/s = 260847 (135680 source, 125167 target) ; Learning rate = 0.000166 ; Loss = 2.528961
+INFO:tensorflow:Step = 283000 ; steps/s = 4.00, tokens/s = 260847 (135680 source, 125167 target) ; Learning rate = 0.000166 ; Loss = 2.528961
+2023-05-18 22:44:07.462000: I runner.py:309] Step = 283100 ; steps/s = 3.99, tokens/s = 259893 (135137 source, 124756 target) ; Learning rate = 0.000166 ; Loss = 2.658218
+INFO:tensorflow:Step = 283100 ; steps/s = 3.99, tokens/s = 259893 (135137 source, 124756 target) ; Learning rate = 0.000166 ; Loss = 2.658218
+2023-05-18 22:44:32.496000: I runner.py:309] Step = 283200 ; steps/s = 4.00, tokens/s = 260388 (135428 source, 124960 target) ; Learning rate = 0.000166 ; Loss = 2.596543
+INFO:tensorflow:Step = 283200 ; steps/s = 4.00, tokens/s = 260388 (135428 source, 124960 target) ; Learning rate = 0.000166 ; Loss = 2.596543
+2023-05-18 22:44:58.155000: I runner.py:309] Step = 283300 ; steps/s = 3.90, tokens/s = 254139 (132126 source, 122013 target) ; Learning rate = 0.000166 ; Loss = 2.708166
+INFO:tensorflow:Step = 283300 ; steps/s = 3.90, tokens/s = 254139 (132126 source, 122013 target) ; Learning rate = 0.000166 ; Loss = 2.708166
+2023-05-18 22:45:23.246000: I runner.py:309] Step = 283400 ; steps/s = 3.99, tokens/s = 259769 (135158 source, 124611 target) ; Learning rate = 0.000166 ; Loss = 2.551876
+INFO:tensorflow:Step = 283400 ; steps/s = 3.99, tokens/s = 259769 (135158 source, 124611 target) ; Learning rate = 0.000166 ; Loss = 2.551876
+2023-05-18 22:45:48.369000: I runner.py:309] Step = 283500 ; steps/s = 3.98, tokens/s = 259548 (134991 source, 124557 target) ; Learning rate = 0.000166 ; Loss = 2.572626
+INFO:tensorflow:Step = 283500 ; steps/s = 3.98, tokens/s = 259548 (134991 source, 124557 target) ; Learning rate = 0.000166 ; Loss = 2.572626
+2023-05-18 22:46:13.303000: I runner.py:309] Step = 283600 ; steps/s = 4.01, tokens/s = 261514 (136029 source, 125485 target) ; Learning rate = 0.000166 ; Loss = 2.563846
+INFO:tensorflow:Step = 283600 ; steps/s = 4.01, tokens/s = 261514 (136029 source, 125485 target) ; Learning rate = 0.000166 ; Loss = 2.563846
+2023-05-18 22:46:38.172000: I runner.py:309] Step = 283700 ; steps/s = 4.02, tokens/s = 262188 (136359 source, 125829 target) ; Learning rate = 0.000166 ; Loss = 2.698801
+INFO:tensorflow:Step = 283700 ; steps/s = 4.02, tokens/s = 262188 (136359 source, 125829 target) ; Learning rate = 0.000166 ; Loss = 2.698801
+2023-05-18 22:47:03.002000: I runner.py:309] Step = 283800 ; steps/s = 4.03, tokens/s = 262462 (136573 source, 125889 target) ; Learning rate = 0.000166 ; Loss = 2.590136
+INFO:tensorflow:Step = 283800 ; steps/s = 4.03, tokens/s = 262462 (136573 source, 125889 target) ; Learning rate = 0.000166 ; Loss = 2.590136
+2023-05-18 22:47:27.779000: I runner.py:309] Step = 283900 ; steps/s = 4.04, tokens/s = 263249 (136835 source, 126414 target) ; Learning rate = 0.000166 ; Loss = 2.552137
+INFO:tensorflow:Step = 283900 ; steps/s = 4.04, tokens/s = 263249 (136835 source, 126414 target) ; Learning rate = 0.000166 ; Loss = 2.552137
+2023-05-18 22:47:52.912000: I runner.py:309] Step = 284000 ; steps/s = 3.98, tokens/s = 259384 (134939 source, 124445 target) ; Learning rate = 0.000166 ; Loss = 2.710013
+INFO:tensorflow:Step = 284000 ; steps/s = 3.98, tokens/s = 259384 (134939 source, 124445 target) ; Learning rate = 0.000166 ; Loss = 2.710013
+2023-05-18 22:48:17.699000: I runner.py:309] Step = 284100 ; steps/s = 4.04, tokens/s = 262961 (136856 source, 126105 target) ; Learning rate = 0.000166 ; Loss = 2.620035
+INFO:tensorflow:Step = 284100 ; steps/s = 4.04, tokens/s = 262961 (136856 source, 126105 target) ; Learning rate = 0.000166 ; Loss = 2.620035
+2023-05-18 22:48:42.665000: I runner.py:309] Step = 284200 ; steps/s = 4.01, tokens/s = 261166 (135877 source, 125289 target) ; Learning rate = 0.000166 ; Loss = 2.634501
+INFO:tensorflow:Step = 284200 ; steps/s = 4.01, tokens/s = 261166 (135877 source, 125289 target) ; Learning rate = 0.000166 ; Loss = 2.634501
+2023-05-18 22:49:07.712000: I runner.py:309] Step = 284300 ; steps/s = 3.99, tokens/s = 260331 (135386 source, 124945 target) ; Learning rate = 0.000166 ; Loss = 2.641884
+INFO:tensorflow:Step = 284300 ; steps/s = 3.99, tokens/s = 260331 (135386 source, 124945 target) ; Learning rate = 0.000166 ; Loss = 2.641884
+2023-05-18 22:49:32.621000: I runner.py:309] Step = 284400 ; steps/s = 4.02, tokens/s = 261460 (136151 source, 125309 target) ; Learning rate = 0.000166 ; Loss = 2.567629
+INFO:tensorflow:Step = 284400 ; steps/s = 4.02, tokens/s = 261460 (136151 source, 125309 target) ; Learning rate = 0.000166 ; Loss = 2.567629
+2023-05-18 22:49:57.578000: I runner.py:309] Step = 284500 ; steps/s = 4.01, tokens/s = 261201 (135858 source, 125343 target) ; Learning rate = 0.000166 ; Loss = 2.506670
+INFO:tensorflow:Step = 284500 ; steps/s = 4.01, tokens/s = 261201 (135858 source, 125343 target) ; Learning rate = 0.000166 ; Loss = 2.506670
+2023-05-18 22:50:22.803000: I runner.py:309] Step = 284600 ; steps/s = 3.97, tokens/s = 258623 (134440 source, 124183 target) ; Learning rate = 0.000166 ; Loss = 2.665040
+INFO:tensorflow:Step = 284600 ; steps/s = 3.97, tokens/s = 258623 (134440 source, 124183 target) ; Learning rate = 0.000166 ; Loss = 2.665040
+2023-05-18 22:50:47.585000: I runner.py:309] Step = 284700 ; steps/s = 4.04, tokens/s = 263056 (136849 source, 126207 target) ; Learning rate = 0.000166 ; Loss = 2.558829
+INFO:tensorflow:Step = 284700 ; steps/s = 4.04, tokens/s = 263056 (136849 source, 126207 target) ; Learning rate = 0.000166 ; Loss = 2.558829
+2023-05-18 22:51:12.625000: I runner.py:309] Step = 284800 ; steps/s = 3.99, tokens/s = 260239 (135424 source, 124815 target) ; Learning rate = 0.000166 ; Loss = 2.555688
+INFO:tensorflow:Step = 284800 ; steps/s = 3.99, tokens/s = 260239 (135424 source, 124815 target) ; Learning rate = 0.000166 ; Loss = 2.555688
+2023-05-18 22:51:37.677000: I runner.py:309] Step = 284900 ; steps/s = 3.99, tokens/s = 260216 (135367 source, 124849 target) ; Learning rate = 0.000166 ; Loss = 2.529328
+INFO:tensorflow:Step = 284900 ; steps/s = 3.99, tokens/s = 260216 (135367 source, 124849 target) ; Learning rate = 0.000166 ; Loss = 2.529328
+2023-05-18 22:52:02.909000: I runner.py:309] Step = 285000 ; steps/s = 3.96, tokens/s = 258252 (134444 source, 123808 target) ; Learning rate = 0.000166 ; Loss = 2.422441
+INFO:tensorflow:Step = 285000 ; steps/s = 3.96, tokens/s = 258252 (134444 source, 123808 target) ; Learning rate = 0.000166 ; Loss = 2.422441
+2023-05-18 22:52:08.684000: I training.py:176] Saved checkpoint run/ckpt-285000
+INFO:tensorflow:Saved checkpoint run/ckpt-285000
+2023-05-18 22:52:08.684000: I training.py:192] Running evaluation for step 285000
+INFO:tensorflow:Running evaluation for step 285000
+2023-05-18 23:38:36.013000: I training.py:192] Evaluation predictions saved to run/eval/predictions.txt.285000
+INFO:tensorflow:Evaluation predictions saved to run/eval/predictions.txt.285000
+2023-05-18 23:40:02.874000: I training.py:192] Evaluation result for step 285000: loss = 1.414418 ; perplexity = 4.114089 ; bleu = 38.379911
+INFO:tensorflow:Evaluation result for step 285000: loss = 1.414418 ; perplexity = 4.114089 ; bleu = 38.379911
+2023-05-18 23:40:28.011000: I runner.py:309] Step = 285100 ; steps/s = 3.99, tokens/s = 259899 (135080 source, 124819 target) ; Learning rate = 0.000166 ; Loss = 2.577192
+INFO:tensorflow:Step = 285100 ; steps/s = 3.99, tokens/s = 259899 (135080 source, 124819 target) ; Learning rate = 0.000166 ; Loss = 2.577192
+2023-05-18 23:40:53.235000: I runner.py:309] Step = 285200 ; steps/s = 3.97, tokens/s = 258437 (134443 source, 123994 target) ; Learning rate = 0.000166 ; Loss = 2.627466
+INFO:tensorflow:Step = 285200 ; steps/s = 3.97, tokens/s = 258437 (134443 source, 123994 target) ; Learning rate = 0.000166 ; Loss = 2.627466
+2023-05-18 23:41:18.496000: I runner.py:309] Step = 285300 ; steps/s = 3.96, tokens/s = 258140 (134189 source, 123951 target) ; Learning rate = 0.000165 ; Loss = 2.648120
+INFO:tensorflow:Step = 285300 ; steps/s = 3.96, tokens/s = 258140 (134189 source, 123951 target) ; Learning rate = 0.000165 ; Loss = 2.648120
+2023-05-18 23:41:43.949000: I runner.py:309] Step = 285400 ; steps/s = 3.93, tokens/s = 256293 (133186 source, 123107 target) ; Learning rate = 0.000165 ; Loss = 2.565539
+INFO:tensorflow:Step = 285400 ; steps/s = 3.93, tokens/s = 256293 (133186 source, 123107 target) ; Learning rate = 0.000165 ; Loss = 2.565539
+2023-05-18 23:42:09.867000: I runner.py:309] Step = 285500 ; steps/s = 3.86, tokens/s = 251582 (130868 source, 120714 target) ; Learning rate = 0.000165 ; Loss = 2.607764
+INFO:tensorflow:Step = 285500 ; steps/s = 3.86, tokens/s = 251582 (130868 source, 120714 target) ; Learning rate = 0.000165 ; Loss = 2.607764
+2023-05-18 23:42:35.753000: I runner.py:309] Step = 285600 ; steps/s = 3.86, tokens/s = 251651 (131040 source, 120611 target) ; Learning rate = 0.000165 ; Loss = 2.693383
+INFO:tensorflow:Step = 285600 ; steps/s = 3.86, tokens/s = 251651 (131040 source, 120611 target) ; Learning rate = 0.000165 ; Loss = 2.693383
+2023-05-18 23:43:01.560000: I runner.py:309] Step = 285700 ; steps/s = 3.88, tokens/s = 252709 (131432 source, 121277 target) ; Learning rate = 0.000165 ; Loss = 2.643957
+INFO:tensorflow:Step = 285700 ; steps/s = 3.88, tokens/s = 252709 (131432 source, 121277 target) ; Learning rate = 0.000165 ; Loss = 2.643957
+2023-05-18 23:43:27.235000: I runner.py:309] Step = 285800 ; steps/s = 3.90, tokens/s = 253843 (132051 source, 121792 target) ; Learning rate = 0.000165 ; Loss = 2.489715
+INFO:tensorflow:Step = 285800 ; steps/s = 3.90, tokens/s = 253843 (132051 source, 121792 target) ; Learning rate = 0.000165 ; Loss = 2.489715
+2023-05-18 23:43:52.904000: I runner.py:309] Step = 285900 ; steps/s = 3.90, tokens/s = 254168 (132101 source, 122067 target) ; Learning rate = 0.000165 ; Loss = 2.651413
+INFO:tensorflow:Step = 285900 ; steps/s = 3.90, tokens/s = 254168 (132101 source, 122067 target) ; Learning rate = 0.000165 ; Loss = 2.651413
+2023-05-18 23:44:18.176000: I runner.py:309] Step = 286000 ; steps/s = 3.96, tokens/s = 257876 (134233 source, 123643 target) ; Learning rate = 0.000165 ; Loss = 2.714700
+INFO:tensorflow:Step = 286000 ; steps/s = 3.96, tokens/s = 257876 (134233 source, 123643 target) ; Learning rate = 0.000165 ; Loss = 2.714700
+2023-05-18 23:44:36.920216: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 4829398 of 10041133
+2023-05-18 23:44:46.920215: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 9135828 of 10041133
+2023-05-18 23:44:49.181464: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:417] Shuffle buffer filled.
+2023-05-18 23:45:05.911000: I runner.py:309] Step = 286100 ; steps/s = 2.10, tokens/s = 132326 (68910 source, 63416 target) ; Learning rate = 0.000165 ; Loss = 2.527010
+INFO:tensorflow:Step = 286100 ; steps/s = 2.10, tokens/s = 132326 (68910 source, 63416 target) ; Learning rate = 0.000165 ; Loss = 2.527010
+2023-05-18 23:45:31.719000: I runner.py:309] Step = 286200 ; steps/s = 3.88, tokens/s = 252707 (131322 source, 121385 target) ; Learning rate = 0.000165 ; Loss = 2.642112
+INFO:tensorflow:Step = 286200 ; steps/s = 3.88, tokens/s = 252707 (131322 source, 121385 target) ; Learning rate = 0.000165 ; Loss = 2.642112
+2023-05-18 23:45:57.481000: I runner.py:309] Step = 286300 ; steps/s = 3.88, tokens/s = 253151 (131668 source, 121483 target) ; Learning rate = 0.000165 ; Loss = 2.674520
+INFO:tensorflow:Step = 286300 ; steps/s = 3.88, tokens/s = 253151 (131668 source, 121483 target) ; Learning rate = 0.000165 ; Loss = 2.674520
+2023-05-18 23:46:23.217000: I runner.py:309] Step = 286400 ; steps/s = 3.89, tokens/s = 253274 (131805 source, 121469 target) ; Learning rate = 0.000165 ; Loss = 2.609285
+INFO:tensorflow:Step = 286400 ; steps/s = 3.89, tokens/s = 253274 (131805 source, 121469 target) ; Learning rate = 0.000165 ; Loss = 2.609285
+2023-05-18 23:46:48.788000: I runner.py:309] Step = 286500 ; steps/s = 3.91, tokens/s = 254954 (132610 source, 122344 target) ; Learning rate = 0.000165 ; Loss = 2.732099
+INFO:tensorflow:Step = 286500 ; steps/s = 3.91, tokens/s = 254954 (132610 source, 122344 target) ; Learning rate = 0.000165 ; Loss = 2.732099
+2023-05-18 23:47:14.569000: I runner.py:309] Step = 286600 ; steps/s = 3.88, tokens/s = 252863 (131524 source, 121339 target) ; Learning rate = 0.000165 ; Loss = 2.573613
+INFO:tensorflow:Step = 286600 ; steps/s = 3.88, tokens/s = 252863 (131524 source, 121339 target) ; Learning rate = 0.000165 ; Loss = 2.573613
+2023-05-18 23:47:40.251000: I runner.py:309] Step = 286700 ; steps/s = 3.89, tokens/s = 253943 (132004 source, 121939 target) ; Learning rate = 0.000165 ; Loss = 2.563063
+INFO:tensorflow:Step = 286700 ; steps/s = 3.89, tokens/s = 253943 (132004 source, 121939 target) ; Learning rate = 0.000165 ; Loss = 2.563063
+2023-05-18 23:48:05.962000: I runner.py:309] Step = 286800 ; steps/s = 3.89, tokens/s = 253384 (131893 source, 121491 target) ; Learning rate = 0.000165 ; Loss = 2.526053
+INFO:tensorflow:Step = 286800 ; steps/s = 3.89, tokens/s = 253384 (131893 source, 121491 target) ; Learning rate = 0.000165 ; Loss = 2.526053
+2023-05-18 23:48:31.612000: I runner.py:309] Step = 286900 ; steps/s = 3.90, tokens/s = 254217 (132161 source, 122056 target) ; Learning rate = 0.000165 ; Loss = 2.538549
+INFO:tensorflow:Step = 286900 ; steps/s = 3.90, tokens/s = 254217 (132161 source, 122056 target) ; Learning rate = 0.000165 ; Loss = 2.538549
+2023-05-18 23:48:57.235000: I runner.py:309] Step = 287000 ; steps/s = 3.90, tokens/s = 254351 (132311 source, 122040 target) ; Learning rate = 0.000165 ; Loss = 2.690238
+INFO:tensorflow:Step = 287000 ; steps/s = 3.90, tokens/s = 254351 (132311 source, 122040 target) ; Learning rate = 0.000165 ; Loss = 2.690238
+2023-05-18 23:49:22.902000: I runner.py:309] Step = 287100 ; steps/s = 3.90, tokens/s = 254108 (132155 source, 121953 target) ; Learning rate = 0.000165 ; Loss = 2.561946
+INFO:tensorflow:Step = 287100 ; steps/s = 3.90, tokens/s = 254108 (132155 source, 121953 target) ; Learning rate = 0.000165 ; Loss = 2.561946
+2023-05-18 23:49:48.280000: I runner.py:309] Step = 287200 ; steps/s = 3.94, tokens/s = 256871 (133602 source, 123269 target) ; Learning rate = 0.000165 ; Loss = 2.600871
+INFO:tensorflow:Step = 287200 ; steps/s = 3.94, tokens/s = 256871 (133602 source, 123269 target) ; Learning rate = 0.000165 ; Loss = 2.600871
+2023-05-18 23:50:14.061000: I runner.py:309] Step = 287300 ; steps/s = 3.88, tokens/s = 252851 (131548 source, 121303 target) ; Learning rate = 0.000165 ; Loss = 2.632014
+INFO:tensorflow:Step = 287300 ; steps/s = 3.88, tokens/s = 252851 (131548 source, 121303 target) ; Learning rate = 0.000165 ; Loss = 2.632014
+2023-05-18 23:50:39.652000: I runner.py:309] Step = 287400 ; steps/s = 3.91, tokens/s = 254853 (132501 source, 122352 target) ; Learning rate = 0.000165 ; Loss = 2.573373
+INFO:tensorflow:Step = 287400 ; steps/s = 3.91, tokens/s = 254853 (132501 source, 122352 target) ; Learning rate = 0.000165 ; Loss = 2.573373
+2023-05-18 23:51:05.364000: I runner.py:309] Step = 287500 ; steps/s = 3.89, tokens/s = 253586 (131896 source, 121690 target) ; Learning rate = 0.000165 ; Loss = 2.663591
+INFO:tensorflow:Step = 287500 ; steps/s = 3.89, tokens/s = 253586 (131896 source, 121690 target) ; Learning rate = 0.000165 ; Loss = 2.663591
+2023-05-18 23:51:30.936000: I runner.py:309] Step = 287600 ; steps/s = 3.91, tokens/s = 254848 (132644 source, 122204 target) ; Learning rate = 0.000165 ; Loss = 2.576486
+INFO:tensorflow:Step = 287600 ; steps/s = 3.91, tokens/s = 254848 (132644 source, 122204 target) ; Learning rate = 0.000165 ; Loss = 2.576486
+2023-05-18 23:51:56.466000: I runner.py:309] Step = 287700 ; steps/s = 3.92, tokens/s = 255420 (132842 source, 122578 target) ; Learning rate = 0.000165 ; Loss = 2.539324
+INFO:tensorflow:Step = 287700 ; steps/s = 3.92, tokens/s = 255420 (132842 source, 122578 target) ; Learning rate = 0.000165 ; Loss = 2.539324
+2023-05-18 23:52:22.162000: I runner.py:309] Step = 287800 ; steps/s = 3.89, tokens/s = 253737 (131998 source, 121739 target) ; Learning rate = 0.000165 ; Loss = 2.568843
+INFO:tensorflow:Step = 287800 ; steps/s = 3.89, tokens/s = 253737 (131998 source, 121739 target) ; Learning rate = 0.000165 ; Loss = 2.568843
+2023-05-18 23:52:47.584000: I runner.py:309] Step = 287900 ; steps/s = 3.93, tokens/s = 256456 (133326 source, 123130 target) ; Learning rate = 0.000165 ; Loss = 2.655627
+INFO:tensorflow:Step = 287900 ; steps/s = 3.93, tokens/s = 256456 (133326 source, 123130 target) ; Learning rate = 0.000165 ; Loss = 2.655627
+2023-05-18 23:53:13.265000: I runner.py:309] Step = 288000 ; steps/s = 3.89, tokens/s = 253944 (132032 source, 121912 target) ; Learning rate = 0.000165 ; Loss = 2.638418
+INFO:tensorflow:Step = 288000 ; steps/s = 3.89, tokens/s = 253944 (132032 source, 121912 target) ; Learning rate = 0.000165 ; Loss = 2.638418
+2023-05-18 23:53:38.875000: I runner.py:309] Step = 288100 ; steps/s = 3.91, tokens/s = 254715 (132415 source, 122300 target) ; Learning rate = 0.000165 ; Loss = 2.616263
+INFO:tensorflow:Step = 288100 ; steps/s = 3.91, tokens/s = 254715 (132415 source, 122300 target) ; Learning rate = 0.000165 ; Loss = 2.616263
+2023-05-18 23:54:04.465000: I runner.py:309] Step = 288200 ; steps/s = 3.91, tokens/s = 254635 (132559 source, 122076 target) ; Learning rate = 0.000165 ; Loss = 2.484158
+INFO:tensorflow:Step = 288200 ; steps/s = 3.91, tokens/s = 254635 (132559 source, 122076 target) ; Learning rate = 0.000165 ; Loss = 2.484158
+2023-05-18 23:54:30.051000: I runner.py:309] Step = 288300 ; steps/s = 3.91, tokens/s = 254676 (132490 source, 122186 target) ; Learning rate = 0.000165 ; Loss = 2.613952
+INFO:tensorflow:Step = 288300 ; steps/s = 3.91, tokens/s = 254676 (132490 source, 122186 target) ; Learning rate = 0.000165 ; Loss = 2.613952
+2023-05-18 23:54:55.594000: I runner.py:309] Step = 288400 ; steps/s = 3.92, tokens/s = 255317 (132789 source, 122528 target) ; Learning rate = 0.000165 ; Loss = 2.576139
+INFO:tensorflow:Step = 288400 ; steps/s = 3.92, tokens/s = 255317 (132789 source, 122528 target) ; Learning rate = 0.000165 ; Loss = 2.576139
+2023-05-18 23:55:21.129000: I runner.py:309] Step = 288500 ; steps/s = 3.92, tokens/s = 255492 (132741 source, 122751 target) ; Learning rate = 0.000165 ; Loss = 2.641180
+INFO:tensorflow:Step = 288500 ; steps/s = 3.92, tokens/s = 255492 (132741 source, 122751 target) ; Learning rate = 0.000165 ; Loss = 2.641180
+2023-05-18 23:55:46.491000: I runner.py:309] Step = 288600 ; steps/s = 3.94, tokens/s = 256971 (133702 source, 123269 target) ; Learning rate = 0.000165 ; Loss = 2.567697
+INFO:tensorflow:Step = 288600 ; steps/s = 3.94, tokens/s = 256971 (133702 source, 123269 target) ; Learning rate = 0.000165 ; Loss = 2.567697
+2023-05-18 23:56:11.993000: I runner.py:309] Step = 288700 ; steps/s = 3.92, tokens/s = 255668 (132968 source, 122700 target) ; Learning rate = 0.000165 ; Loss = 2.499648
+INFO:tensorflow:Step = 288700 ; steps/s = 3.92, tokens/s = 255668 (132968 source, 122700 target) ; Learning rate = 0.000165 ; Loss = 2.499648
+2023-05-18 23:56:37.560000: I runner.py:309] Step = 288800 ; steps/s = 3.91, tokens/s = 254958 (132537 source, 122421 target) ; Learning rate = 0.000164 ; Loss = 2.634600
+INFO:tensorflow:Step = 288800 ; steps/s = 3.91, tokens/s = 254958 (132537 source, 122421 target) ; Learning rate = 0.000164 ; Loss = 2.634600
+2023-05-18 23:57:03.231000: I runner.py:309] Step = 288900 ; steps/s = 3.90, tokens/s = 253827 (132142 source, 121685 target) ; Learning rate = 0.000164 ; Loss = 2.606293
+INFO:tensorflow:Step = 288900 ; steps/s = 3.90, tokens/s = 253827 (132142 source, 121685 target) ; Learning rate = 0.000164 ; Loss = 2.606293
+2023-05-18 23:57:28.784000: I runner.py:309] Step = 289000 ; steps/s = 3.91, tokens/s = 255028 (132750 source, 122278 target) ; Learning rate = 0.000164 ; Loss = 2.494485
+INFO:tensorflow:Step = 289000 ; steps/s = 3.91, tokens/s = 255028 (132750 source, 122278 target) ; Learning rate = 0.000164 ; Loss = 2.494485
+2023-05-18 23:57:54.424000: I runner.py:309] Step = 289100 ; steps/s = 3.90, tokens/s = 254287 (132258 source, 122029 target) ; Learning rate = 0.000164 ; Loss = 2.540163
+INFO:tensorflow:Step = 289100 ; steps/s = 3.90, tokens/s = 254287 (132258 source, 122029 target) ; Learning rate = 0.000164 ; Loss = 2.540163
+2023-05-18 23:58:19.898000: I runner.py:309] Step = 289200 ; steps/s = 3.93, tokens/s = 256070 (133101 source, 122969 target) ; Learning rate = 0.000164 ; Loss = 2.564617
+INFO:tensorflow:Step = 289200 ; steps/s = 3.93, tokens/s = 256070 (133101 source, 122969 target) ; Learning rate = 0.000164 ; Loss = 2.564617
+2023-05-18 23:58:45.501000: I runner.py:309] Step = 289300 ; steps/s = 3.91, tokens/s = 254590 (132476 source, 122114 target) ; Learning rate = 0.000164 ; Loss = 2.478656
+INFO:tensorflow:Step = 289300 ; steps/s = 3.91, tokens/s = 254590 (132476 source, 122114 target) ; Learning rate = 0.000164 ; Loss = 2.478656
+2023-05-18 23:59:11.229000: I runner.py:309] Step = 289400 ; steps/s = 3.89, tokens/s = 253278 (131772 source, 121506 target) ; Learning rate = 0.000164 ; Loss = 2.638672
+INFO:tensorflow:Step = 289400 ; steps/s = 3.89, tokens/s = 253278 (131772 source, 121506 target) ; Learning rate = 0.000164 ; Loss = 2.638672
+2023-05-18 23:59:36.987000: I runner.py:309] Step = 289500 ; steps/s = 3.88, tokens/s = 252971 (131676 source, 121295 target) ; Learning rate = 0.000164 ; Loss = 2.626599
+INFO:tensorflow:Step = 289500 ; steps/s = 3.88, tokens/s = 252971 (131676 source, 121295 target) ; Learning rate = 0.000164 ; Loss = 2.626599
+2023-05-19 00:00:02.623000: I runner.py:309] Step = 289600 ; steps/s = 3.90, tokens/s = 254339 (132312 source, 122027 target) ; Learning rate = 0.000164 ; Loss = 2.556983
+INFO:tensorflow:Step = 289600 ; steps/s = 3.90, tokens/s = 254339 (132312 source, 122027 target) ; Learning rate = 0.000164 ; Loss = 2.556983
+2023-05-19 00:00:28.281000: I runner.py:309] Step = 289700 ; steps/s = 3.90, tokens/s = 254261 (132146 source, 122115 target) ; Learning rate = 0.000164 ; Loss = 2.650785
+INFO:tensorflow:Step = 289700 ; steps/s = 3.90, tokens/s = 254261 (132146 source, 122115 target) ; Learning rate = 0.000164 ; Loss = 2.650785
+2023-05-19 00:00:53.975000: I runner.py:309] Step = 289800 ; steps/s = 3.89, tokens/s = 253712 (132047 source, 121665 target) ; Learning rate = 0.000164 ; Loss = 2.527450
+INFO:tensorflow:Step = 289800 ; steps/s = 3.89, tokens/s = 253712 (132047 source, 121665 target) ; Learning rate = 0.000164 ; Loss = 2.527450
+2023-05-19 00:01:19.417000: I runner.py:309] Step = 289900 ; steps/s = 3.93, tokens/s = 256262 (133359 source, 122903 target) ; Learning rate = 0.000164 ; Loss = 2.648234
+INFO:tensorflow:Step = 289900 ; steps/s = 3.93, tokens/s = 256262 (133359 source, 122903 target) ; Learning rate = 0.000164 ; Loss = 2.648234
+2023-05-19 00:01:45.213000: I runner.py:309] Step = 290000 ; steps/s = 3.88, tokens/s = 252800 (131487 source, 121313 target) ; Learning rate = 0.000164 ; Loss = 2.539854
+INFO:tensorflow:Step = 290000 ; steps/s = 3.88, tokens/s = 252800 (131487 source, 121313 target) ; Learning rate = 0.000164 ; Loss = 2.539854
+2023-05-19 00:01:49.863000: I training.py:176] Saved checkpoint run/ckpt-290000
+INFO:tensorflow:Saved checkpoint run/ckpt-290000
+2023-05-19 00:01:49.863000: I training.py:192] Running evaluation for step 290000
+INFO:tensorflow:Running evaluation for step 290000
+2023-05-19 00:49:21.144000: I training.py:192] Evaluation predictions saved to run/eval/predictions.txt.290000
+INFO:tensorflow:Evaluation predictions saved to run/eval/predictions.txt.290000
+2023-05-19 00:50:39.929000: I training.py:192] Evaluation result for step 290000: loss = 1.415857 ; perplexity = 4.120016 ; bleu = 38.370616
+INFO:tensorflow:Evaluation result for step 290000: loss = 1.415857 ; perplexity = 4.120016 ; bleu = 38.370616
+2023-05-19 00:51:05.290000: I runner.py:309] Step = 290100 ; steps/s = 3.95, tokens/s = 257380 (133855 source, 123525 target) ; Learning rate = 0.000164 ; Loss = 2.779923
+INFO:tensorflow:Step = 290100 ; steps/s = 3.95, tokens/s = 257380 (133855 source, 123525 target) ; Learning rate = 0.000164 ; Loss = 2.779923
+2023-05-19 00:51:30.616000: I runner.py:309] Step = 290200 ; steps/s = 3.95, tokens/s = 257375 (133881 source, 123494 target) ; Learning rate = 0.000164 ; Loss = 2.559207
+INFO:tensorflow:Step = 290200 ; steps/s = 3.95, tokens/s = 257375 (133881 source, 123494 target) ; Learning rate = 0.000164 ; Loss = 2.559207
+2023-05-19 00:51:56.216000: I runner.py:309] Step = 290300 ; steps/s = 3.91, tokens/s = 254533 (132401 source, 122132 target) ; Learning rate = 0.000164 ; Loss = 2.588034
+INFO:tensorflow:Step = 290300 ; steps/s = 3.91, tokens/s = 254533 (132401 source, 122132 target) ; Learning rate = 0.000164 ; Loss = 2.588034
+2023-05-19 00:52:21.860000: I runner.py:309] Step = 290400 ; steps/s = 3.90, tokens/s = 254352 (132167 source, 122185 target) ; Learning rate = 0.000164 ; Loss = 2.669066
+INFO:tensorflow:Step = 290400 ; steps/s = 3.90, tokens/s = 254352 (132167 source, 122185 target) ; Learning rate = 0.000164 ; Loss = 2.669066
+2023-05-19 00:52:47.608000: I runner.py:309] Step = 290500 ; steps/s = 3.89, tokens/s = 253362 (131703 source, 121659 target) ; Learning rate = 0.000164 ; Loss = 2.555676
+INFO:tensorflow:Step = 290500 ; steps/s = 3.89, tokens/s = 253362 (131703 source, 121659 target) ; Learning rate = 0.000164 ; Loss = 2.555676
+2023-05-19 00:53:13.707000: I runner.py:309] Step = 290600 ; steps/s = 3.83, tokens/s = 249685 (129951 source, 119734 target) ; Learning rate = 0.000164 ; Loss = 2.497492
+INFO:tensorflow:Step = 290600 ; steps/s = 3.83, tokens/s = 249685 (129951 source, 119734 target) ; Learning rate = 0.000164 ; Loss = 2.497492
+2023-05-19 00:53:39.565000: I runner.py:309] Step = 290700 ; steps/s = 3.87, tokens/s = 252180 (131157 source, 121023 target) ; Learning rate = 0.000164 ; Loss = 2.537497
+INFO:tensorflow:Step = 290700 ; steps/s = 3.87, tokens/s = 252180 (131157 source, 121023 target) ; Learning rate = 0.000164 ; Loss = 2.537497
+2023-05-19 00:54:05.551000: I runner.py:309] Step = 290800 ; steps/s = 3.85, tokens/s = 250779 (130506 source, 120273 target) ; Learning rate = 0.000164 ; Loss = 2.706598
+INFO:tensorflow:Step = 290800 ; steps/s = 3.85, tokens/s = 250779 (130506 source, 120273 target) ; Learning rate = 0.000164 ; Loss = 2.706598
+2023-05-19 00:54:31.458000: I runner.py:309] Step = 290900 ; steps/s = 3.86, tokens/s = 251595 (130854 source, 120741 target) ; Learning rate = 0.000164 ; Loss = 2.590792
+INFO:tensorflow:Step = 290900 ; steps/s = 3.86, tokens/s = 251595 (130854 source, 120741 target) ; Learning rate = 0.000164 ; Loss = 2.590792
+2023-05-19 00:54:57.416000: I runner.py:309] Step = 291000 ; steps/s = 3.85, tokens/s = 251144 (130672 source, 120472 target) ; Learning rate = 0.000164 ; Loss = 2.722748
+INFO:tensorflow:Step = 291000 ; steps/s = 3.85, tokens/s = 251144 (130672 source, 120472 target) ; Learning rate = 0.000164 ; Loss = 2.722748
+2023-05-19 00:55:23.086000: I runner.py:309] Step = 291100 ; steps/s = 3.90, tokens/s = 253980 (132109 source, 121871 target) ; Learning rate = 0.000164 ; Loss = 2.652874
+INFO:tensorflow:Step = 291100 ; steps/s = 3.90, tokens/s = 253980 (132109 source, 121871 target) ; Learning rate = 0.000164 ; Loss = 2.652874
+2023-05-19 00:55:48.421000: I runner.py:309] Step = 291200 ; steps/s = 3.95, tokens/s = 257266 (133858 source, 123408 target) ; Learning rate = 0.000164 ; Loss = 2.573112
+INFO:tensorflow:Step = 291200 ; steps/s = 3.95, tokens/s = 257266 (133858 source, 123408 target) ; Learning rate = 0.000164 ; Loss = 2.573112
+2023-05-19 00:56:13.994000: I runner.py:309] Step = 291300 ; steps/s = 3.91, tokens/s = 254992 (132509 source, 122483 target) ; Learning rate = 0.000164 ; Loss = 2.700335
+INFO:tensorflow:Step = 291300 ; steps/s = 3.91, tokens/s = 254992 (132509 source, 122483 target) ; Learning rate = 0.000164 ; Loss = 2.700335
+2023-05-19 00:56:39.377000: I runner.py:309] Step = 291400 ; steps/s = 3.94, tokens/s = 257020 (133633 source, 123387 target) ; Learning rate = 0.000164 ; Loss = 2.665869
+INFO:tensorflow:Step = 291400 ; steps/s = 3.94, tokens/s = 257020 (133633 source, 123387 target) ; Learning rate = 0.000164 ; Loss = 2.665869
+2023-05-19 00:57:04.693000: I runner.py:309] Step = 291500 ; steps/s = 3.95, tokens/s = 257472 (133940 source, 123532 target) ; Learning rate = 0.000164 ; Loss = 2.548355
+INFO:tensorflow:Step = 291500 ; steps/s = 3.95, tokens/s = 257472 (133940 source, 123532 target) ; Learning rate = 0.000164 ; Loss = 2.548355
+2023-05-19 00:57:27.477165: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 4861967 of 10041133
+2023-05-19 00:57:37.477167: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 8881188 of 10041133
+2023-05-19 00:57:40.616787: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:417] Shuffle buffer filled.
+2023-05-19 00:57:52.432000: I runner.py:309] Step = 291600 ; steps/s = 2.10, tokens/s = 132274 (68868 source, 63406 target) ; Learning rate = 0.000164 ; Loss = 2.632278
+INFO:tensorflow:Step = 291600 ; steps/s = 2.10, tokens/s = 132274 (68868 source, 63406 target) ; Learning rate = 0.000164 ; Loss = 2.632278
+2023-05-19 00:58:17.944000: I runner.py:309] Step = 291700 ; steps/s = 3.92, tokens/s = 255773 (132925 source, 122848 target) ; Learning rate = 0.000164 ; Loss = 2.530188
+INFO:tensorflow:Step = 291700 ; steps/s = 3.92, tokens/s = 255773 (132925 source, 122848 target) ; Learning rate = 0.000164 ; Loss = 2.530188
+2023-05-19 00:58:43.734000: I runner.py:309] Step = 291800 ; steps/s = 3.88, tokens/s = 252919 (131415 source, 121504 target) ; Learning rate = 0.000164 ; Loss = 2.551459
+INFO:tensorflow:Step = 291800 ; steps/s = 3.88, tokens/s = 252919 (131415 source, 121504 target) ; Learning rate = 0.000164 ; Loss = 2.551459
+2023-05-19 00:59:09.485000: I runner.py:309] Step = 291900 ; steps/s = 3.88, tokens/s = 253176 (131667 source, 121509 target) ; Learning rate = 0.000164 ; Loss = 2.742959
+INFO:tensorflow:Step = 291900 ; steps/s = 3.88, tokens/s = 253176 (131667 source, 121509 target) ; Learning rate = 0.000164 ; Loss = 2.742959
+2023-05-19 00:59:35.194000: I runner.py:309] Step = 292000 ; steps/s = 3.89, tokens/s = 253647 (131905 source, 121742 target) ; Learning rate = 0.000164 ; Loss = 2.523530
+INFO:tensorflow:Step = 292000 ; steps/s = 3.89, tokens/s = 253647 (131905 source, 121742 target) ; Learning rate = 0.000164 ; Loss = 2.523530
+2023-05-19 01:00:00.928000: I runner.py:309] Step = 292100 ; steps/s = 3.89, tokens/s = 253456 (131877 source, 121579 target) ; Learning rate = 0.000164 ; Loss = 2.643027
+INFO:tensorflow:Step = 292100 ; steps/s = 3.89, tokens/s = 253456 (131877 source, 121579 target) ; Learning rate = 0.000164 ; Loss = 2.643027
+2023-05-19 01:00:26.779000: I runner.py:309] Step = 292200 ; steps/s = 3.87, tokens/s = 252077 (131120 source, 120957 target) ; Learning rate = 0.000164 ; Loss = 2.502725
+INFO:tensorflow:Step = 292200 ; steps/s = 3.87, tokens/s = 252077 (131120 source, 120957 target) ; Learning rate = 0.000164 ; Loss = 2.502725
+2023-05-19 01:00:52.515000: I runner.py:309] Step = 292300 ; steps/s = 3.89, tokens/s = 253225 (131739 source, 121486 target) ; Learning rate = 0.000163 ; Loss = 2.625478
+INFO:tensorflow:Step = 292300 ; steps/s = 3.89, tokens/s = 253225 (131739 source, 121486 target) ; Learning rate = 0.000163 ; Loss = 2.625478
+2023-05-19 01:01:17.935000: I runner.py:309] Step = 292400 ; steps/s = 3.94, tokens/s = 256448 (133361 source, 123087 target) ; Learning rate = 0.000163 ; Loss = 2.591362
+INFO:tensorflow:Step = 292400 ; steps/s = 3.94, tokens/s = 256448 (133361 source, 123087 target) ; Learning rate = 0.000163 ; Loss = 2.591362
+2023-05-19 01:01:43.672000: I runner.py:309] Step = 292500 ; steps/s = 3.89, tokens/s = 253192 (131789 source, 121403 target) ; Learning rate = 0.000163 ; Loss = 2.545416
+INFO:tensorflow:Step = 292500 ; steps/s = 3.89, tokens/s = 253192 (131789 source, 121403 target) ; Learning rate = 0.000163 ; Loss = 2.545416
+2023-05-19 01:02:09.263000: I runner.py:309] Step = 292600 ; steps/s = 3.91, tokens/s = 254725 (132519 source, 122206 target) ; Learning rate = 0.000163 ; Loss = 2.505263
+INFO:tensorflow:Step = 292600 ; steps/s = 3.91, tokens/s = 254725 (132519 source, 122206 target) ; Learning rate = 0.000163 ; Loss = 2.505263
+2023-05-19 01:02:34.875000: I runner.py:309] Step = 292700 ; steps/s = 3.91, tokens/s = 254546 (132404 source, 122142 target) ; Learning rate = 0.000163 ; Loss = 2.604401
+INFO:tensorflow:Step = 292700 ; steps/s = 3.91, tokens/s = 254546 (132404 source, 122142 target) ; Learning rate = 0.000163 ; Loss = 2.604401
+2023-05-19 01:03:00.550000: I runner.py:309] Step = 292800 ; steps/s = 3.90, tokens/s = 253952 (132099 source, 121853 target) ; Learning rate = 0.000163 ; Loss = 2.504662
+INFO:tensorflow:Step = 292800 ; steps/s = 3.90, tokens/s = 253952 (132099 source, 121853 target) ; Learning rate = 0.000163 ; Loss = 2.504662
+2023-05-19 01:03:26.226000: I runner.py:309] Step = 292900 ; steps/s = 3.90, tokens/s = 253923 (132050 source, 121873 target) ; Learning rate = 0.000163 ; Loss = 2.518023
+INFO:tensorflow:Step = 292900 ; steps/s = 3.90, tokens/s = 253923 (132050 source, 121873 target) ; Learning rate = 0.000163 ; Loss = 2.518023
+2023-05-19 01:03:51.956000: I runner.py:309] Step = 293000 ; steps/s = 3.89, tokens/s = 253449 (131800 source, 121649 target) ; Learning rate = 0.000163 ; Loss = 2.719505
+INFO:tensorflow:Step = 293000 ; steps/s = 3.89, tokens/s = 253449 (131800 source, 121649 target) ; Learning rate = 0.000163 ; Loss = 2.719505
+2023-05-19 01:04:17.573000: I runner.py:309] Step = 293100 ; steps/s = 3.90, tokens/s = 254365 (132405 source, 121960 target) ; Learning rate = 0.000163 ; Loss = 2.497194
+INFO:tensorflow:Step = 293100 ; steps/s = 3.90, tokens/s = 254365 (132405 source, 121960 target) ; Learning rate = 0.000163 ; Loss = 2.497194
+2023-05-19 01:04:43.259000: I runner.py:309] Step = 293200 ; steps/s = 3.89, tokens/s = 253880 (132031 source, 121849 target) ; Learning rate = 0.000163 ; Loss = 2.645423
+INFO:tensorflow:Step = 293200 ; steps/s = 3.89, tokens/s = 253880 (132031 source, 121849 target) ; Learning rate = 0.000163 ; Loss = 2.645423
+2023-05-19 01:05:08.998000: I runner.py:309] Step = 293300 ; steps/s = 3.89, tokens/s = 253203 (131718 source, 121485 target) ; Learning rate = 0.000163 ; Loss = 2.645789
+INFO:tensorflow:Step = 293300 ; steps/s = 3.89, tokens/s = 253203 (131718 source, 121485 target) ; Learning rate = 0.000163 ; Loss = 2.645789
+2023-05-19 01:05:34.756000: I runner.py:309] Step = 293400 ; steps/s = 3.88, tokens/s = 253267 (131582 source, 121685 target) ; Learning rate = 0.000163 ; Loss = 2.459898
+INFO:tensorflow:Step = 293400 ; steps/s = 3.88, tokens/s = 253267 (131582 source, 121685 target) ; Learning rate = 0.000163 ; Loss = 2.459898
+2023-05-19 01:06:00.357000: I runner.py:309] Step = 293500 ; steps/s = 3.91, tokens/s = 254556 (132472 source, 122084 target) ; Learning rate = 0.000163 ; Loss = 2.621587
+INFO:tensorflow:Step = 293500 ; steps/s = 3.91, tokens/s = 254556 (132472 source, 122084 target) ; Learning rate = 0.000163 ; Loss = 2.621587
+2023-05-19 01:06:26.017000: I runner.py:309] Step = 293600 ; steps/s = 3.90, tokens/s = 254164 (132142 source, 122022 target) ; Learning rate = 0.000163 ; Loss = 2.561759
+INFO:tensorflow:Step = 293600 ; steps/s = 3.90, tokens/s = 254164 (132142 source, 122022 target) ; Learning rate = 0.000163 ; Loss = 2.561759
+2023-05-19 01:06:51.756000: I runner.py:309] Step = 293700 ; steps/s = 3.89, tokens/s = 253318 (131764 source, 121554 target) ; Learning rate = 0.000163 ; Loss = 2.386395
+INFO:tensorflow:Step = 293700 ; steps/s = 3.89, tokens/s = 253318 (131764 source, 121554 target) ; Learning rate = 0.000163 ; Loss = 2.386395
+2023-05-19 01:07:17.214000: I runner.py:309] Step = 293800 ; steps/s = 3.93, tokens/s = 255868 (133250 source, 122618 target) ; Learning rate = 0.000163 ; Loss = 2.613318
+INFO:tensorflow:Step = 293800 ; steps/s = 3.93, tokens/s = 255868 (133250 source, 122618 target) ; Learning rate = 0.000163 ; Loss = 2.613318
+2023-05-19 01:07:42.932000: I runner.py:309] Step = 293900 ; steps/s = 3.89, tokens/s = 253555 (131842 source, 121713 target) ; Learning rate = 0.000163 ; Loss = 2.572727
+INFO:tensorflow:Step = 293900 ; steps/s = 3.89, tokens/s = 253555 (131842 source, 121713 target) ; Learning rate = 0.000163 ; Loss = 2.572727
+2023-05-19 01:08:08.685000: I runner.py:309] Step = 294000 ; steps/s = 3.88, tokens/s = 253062 (131700 source, 121362 target) ; Learning rate = 0.000163 ; Loss = 2.600975
+INFO:tensorflow:Step = 294000 ; steps/s = 3.88, tokens/s = 253062 (131700 source, 121362 target) ; Learning rate = 0.000163 ; Loss = 2.600975
+2023-05-19 01:08:34.355000: I runner.py:309] Step = 294100 ; steps/s = 3.90, tokens/s = 253932 (132073 source, 121859 target) ; Learning rate = 0.000163 ; Loss = 2.543619
+INFO:tensorflow:Step = 294100 ; steps/s = 3.90, tokens/s = 253932 (132073 source, 121859 target) ; Learning rate = 0.000163 ; Loss = 2.543619
+2023-05-19 01:08:59.989000: I runner.py:309] Step = 294200 ; steps/s = 3.90, tokens/s = 254412 (132279 source, 122133 target) ; Learning rate = 0.000163 ; Loss = 2.581218
+INFO:tensorflow:Step = 294200 ; steps/s = 3.90, tokens/s = 254412 (132279 source, 122133 target) ; Learning rate = 0.000163 ; Loss = 2.581218
+2023-05-19 01:09:25.630000: I runner.py:309] Step = 294300 ; steps/s = 3.90, tokens/s = 254086 (132244 source, 121842 target) ; Learning rate = 0.000163 ; Loss = 2.736670
+INFO:tensorflow:Step = 294300 ; steps/s = 3.90, tokens/s = 254086 (132244 source, 121842 target) ; Learning rate = 0.000163 ; Loss = 2.736670
+2023-05-19 01:09:51.246000: I runner.py:309] Step = 294400 ; steps/s = 3.90, tokens/s = 254560 (132397 source, 122163 target) ; Learning rate = 0.000163 ; Loss = 2.464320
+INFO:tensorflow:Step = 294400 ; steps/s = 3.90, tokens/s = 254560 (132397 source, 122163 target) ; Learning rate = 0.000163 ; Loss = 2.464320
+2023-05-19 01:10:16.673000: I runner.py:309] Step = 294500 ; steps/s = 3.93, tokens/s = 256389 (133316 source, 123073 target) ; Learning rate = 0.000163 ; Loss = 2.659370
+INFO:tensorflow:Step = 294500 ; steps/s = 3.93, tokens/s = 256389 (133316 source, 123073 target) ; Learning rate = 0.000163 ; Loss = 2.659370
+2023-05-19 01:10:42.276000: I runner.py:309] Step = 294600 ; steps/s = 3.91, tokens/s = 254549 (132419 source, 122130 target) ; Learning rate = 0.000163 ; Loss = 2.673497
+INFO:tensorflow:Step = 294600 ; steps/s = 3.91, tokens/s = 254549 (132419 source, 122130 target) ; Learning rate = 0.000163 ; Loss = 2.673497
+2023-05-19 01:11:07.885000: I runner.py:309] Step = 294700 ; steps/s = 3.91, tokens/s = 254715 (132449 source, 122266 target) ; Learning rate = 0.000163 ; Loss = 2.664732
+INFO:tensorflow:Step = 294700 ; steps/s = 3.91, tokens/s = 254715 (132449 source, 122266 target) ; Learning rate = 0.000163 ; Loss = 2.664732
+2023-05-19 01:11:33.601000: I runner.py:309] Step = 294800 ; steps/s = 3.89, tokens/s = 253471 (131870 source, 121601 target) ; Learning rate = 0.000163 ; Loss = 2.804503
+INFO:tensorflow:Step = 294800 ; steps/s = 3.89, tokens/s = 253471 (131870 source, 121601 target) ; Learning rate = 0.000163 ; Loss = 2.804503
+2023-05-19 01:11:59.345000: I runner.py:309] Step = 294900 ; steps/s = 3.89, tokens/s = 253224 (131704 source, 121520 target) ; Learning rate = 0.000163 ; Loss = 2.533730
+INFO:tensorflow:Step = 294900 ; steps/s = 3.89, tokens/s = 253224 (131704 source, 121520 target) ; Learning rate = 0.000163 ; Loss = 2.533730
+2023-05-19 01:12:24.922000: I runner.py:309] Step = 295000 ; steps/s = 3.91, tokens/s = 254914 (132568 source, 122346 target) ; Learning rate = 0.000163 ; Loss = 2.700015
+INFO:tensorflow:Step = 295000 ; steps/s = 3.91, tokens/s = 254914 (132568 source, 122346 target) ; Learning rate = 0.000163 ; Loss = 2.700015
+2023-05-19 01:12:29.047000: I training.py:176] Saved checkpoint run/ckpt-295000
+INFO:tensorflow:Saved checkpoint run/ckpt-295000
+2023-05-19 01:12:29.047000: I training.py:192] Running evaluation for step 295000
+INFO:tensorflow:Running evaluation for step 295000
+2023-05-19 01:58:07.741000: I training.py:192] Evaluation predictions saved to run/eval/predictions.txt.295000
+INFO:tensorflow:Evaluation predictions saved to run/eval/predictions.txt.295000
+2023-05-19 01:59:29.639000: I training.py:192] Evaluation result for step 295000: loss = 1.414380 ; perplexity = 4.113937 ; bleu = 38.404651
+INFO:tensorflow:Evaluation result for step 295000: loss = 1.414380 ; perplexity = 4.113937 ; bleu = 38.404651
+2023-05-19 01:59:54.937000: I runner.py:309] Step = 295100 ; steps/s = 3.96, tokens/s = 258116 (134269 source, 123847 target) ; Learning rate = 0.000163 ; Loss = 2.688186
+INFO:tensorflow:Step = 295100 ; steps/s = 3.96, tokens/s = 258116 (134269 source, 123847 target) ; Learning rate = 0.000163 ; Loss = 2.688186
+2023-05-19 02:00:20.040000: I runner.py:309] Step = 295200 ; steps/s = 3.98, tokens/s = 259564 (135066 source, 124498 target) ; Learning rate = 0.000163 ; Loss = 2.617057
+INFO:tensorflow:Step = 295200 ; steps/s = 3.98, tokens/s = 259564 (135066 source, 124498 target) ; Learning rate = 0.000163 ; Loss = 2.617057
+2023-05-19 02:00:45.201000: I runner.py:309] Step = 295300 ; steps/s = 3.98, tokens/s = 259203 (134755 source, 124448 target) ; Learning rate = 0.000163 ; Loss = 2.644871
+INFO:tensorflow:Step = 295300 ; steps/s = 3.98, tokens/s = 259203 (134755 source, 124448 target) ; Learning rate = 0.000163 ; Loss = 2.644871
+2023-05-19 02:01:10.440000: I runner.py:309] Step = 295400 ; steps/s = 3.96, tokens/s = 258325 (134299 source, 124026 target) ; Learning rate = 0.000163 ; Loss = 2.578014
+INFO:tensorflow:Step = 295400 ; steps/s = 3.96, tokens/s = 258325 (134299 source, 124026 target) ; Learning rate = 0.000163 ; Loss = 2.578014
+2023-05-19 02:01:35.836000: I runner.py:309] Step = 295500 ; steps/s = 3.94, tokens/s = 256633 (133537 source, 123096 target) ; Learning rate = 0.000163 ; Loss = 2.534055
+INFO:tensorflow:Step = 295500 ; steps/s = 3.94, tokens/s = 256633 (133537 source, 123096 target) ; Learning rate = 0.000163 ; Loss = 2.534055
+2023-05-19 02:02:01.719000: I runner.py:309] Step = 295600 ; steps/s = 3.86, tokens/s = 251966 (130984 source, 120982 target) ; Learning rate = 0.000163 ; Loss = 2.522996
+INFO:tensorflow:Step = 295600 ; steps/s = 3.86, tokens/s = 251966 (130984 source, 120982 target) ; Learning rate = 0.000163 ; Loss = 2.522996
+2023-05-19 02:02:27.845000: I runner.py:309] Step = 295700 ; steps/s = 3.83, tokens/s = 249478 (129791 source, 119687 target) ; Learning rate = 0.000163 ; Loss = 2.510177
+INFO:tensorflow:Step = 295700 ; steps/s = 3.83, tokens/s = 249478 (129791 source, 119687 target) ; Learning rate = 0.000163 ; Loss = 2.510177
+2023-05-19 02:02:53.863000: I runner.py:309] Step = 295800 ; steps/s = 3.85, tokens/s = 250811 (130360 source, 120451 target) ; Learning rate = 0.000163 ; Loss = 2.639901
+INFO:tensorflow:Step = 295800 ; steps/s = 3.85, tokens/s = 250811 (130360 source, 120451 target) ; Learning rate = 0.000163 ; Loss = 2.639901
+2023-05-19 02:03:19.546000: I runner.py:309] Step = 295900 ; steps/s = 3.89, tokens/s = 253876 (132082 source, 121794 target) ; Learning rate = 0.000162 ; Loss = 2.349618
+INFO:tensorflow:Step = 295900 ; steps/s = 3.89, tokens/s = 253876 (132082 source, 121794 target) ; Learning rate = 0.000162 ; Loss = 2.349618
+2023-05-19 02:03:45.457000: I runner.py:309] Step = 296000 ; steps/s = 3.86, tokens/s = 251619 (130872 source, 120747 target) ; Learning rate = 0.000162 ; Loss = 2.455106
+INFO:tensorflow:Step = 296000 ; steps/s = 3.86, tokens/s = 251619 (130872 source, 120747 target) ; Learning rate = 0.000162 ; Loss = 2.455106
+2023-05-19 02:04:11.350000: I runner.py:309] Step = 296100 ; steps/s = 3.86, tokens/s = 251613 (130944 source, 120669 target) ; Learning rate = 0.000162 ; Loss = 2.681096
+INFO:tensorflow:Step = 296100 ; steps/s = 3.86, tokens/s = 251613 (130944 source, 120669 target) ; Learning rate = 0.000162 ; Loss = 2.681096
+2023-05-19 02:04:37.152000: I runner.py:309] Step = 296200 ; steps/s = 3.88, tokens/s = 252775 (131371 source, 121404 target) ; Learning rate = 0.000162 ; Loss = 2.621216
+INFO:tensorflow:Step = 296200 ; steps/s = 3.88, tokens/s = 252775 (131371 source, 121404 target) ; Learning rate = 0.000162 ; Loss = 2.621216
+2023-05-19 02:05:02.983000: I runner.py:309] Step = 296300 ; steps/s = 3.87, tokens/s = 252462 (131348 source, 121114 target) ; Learning rate = 0.000162 ; Loss = 2.656530
+INFO:tensorflow:Step = 296300 ; steps/s = 3.87, tokens/s = 252462 (131348 source, 121114 target) ; Learning rate = 0.000162 ; Loss = 2.656530
+2023-05-19 02:05:28.728000: I runner.py:309] Step = 296400 ; steps/s = 3.89, tokens/s = 253215 (131770 source, 121445 target) ; Learning rate = 0.000162 ; Loss = 2.654325
+INFO:tensorflow:Step = 296400 ; steps/s = 3.89, tokens/s = 253215 (131770 source, 121445 target) ; Learning rate = 0.000162 ; Loss = 2.654325
+2023-05-19 02:05:54.355000: I runner.py:309] Step = 296500 ; steps/s = 3.90, tokens/s = 254364 (132285 source, 122079 target) ; Learning rate = 0.000162 ; Loss = 2.602852
+INFO:tensorflow:Step = 296500 ; steps/s = 3.90, tokens/s = 254364 (132285 source, 122079 target) ; Learning rate = 0.000162 ; Loss = 2.602852
+2023-05-19 02:06:19.812000: I runner.py:309] Step = 296600 ; steps/s = 3.93, tokens/s = 256247 (133193 source, 123054 target) ; Learning rate = 0.000162 ; Loss = 2.496400
+INFO:tensorflow:Step = 296600 ; steps/s = 3.93, tokens/s = 256247 (133193 source, 123054 target) ; Learning rate = 0.000162 ; Loss = 2.496400
+2023-05-19 02:06:45.403000: I runner.py:309] Step = 296700 ; steps/s = 3.91, tokens/s = 254590 (132485 source, 122105 target) ; Learning rate = 0.000162 ; Loss = 2.690179
+INFO:tensorflow:Step = 296700 ; steps/s = 3.91, tokens/s = 254590 (132485 source, 122105 target) ; Learning rate = 0.000162 ; Loss = 2.690179
+2023-05-19 02:07:11.074000: I runner.py:309] Step = 296800 ; steps/s = 3.90, tokens/s = 253964 (132120 source, 121844 target) ; Learning rate = 0.000162 ; Loss = 2.703762
+INFO:tensorflow:Step = 296800 ; steps/s = 3.90, tokens/s = 253964 (132120 source, 121844 target) ; Learning rate = 0.000162 ; Loss = 2.703762
+2023-05-19 02:07:36.650000: I runner.py:309] Step = 296900 ; steps/s = 3.91, tokens/s = 255065 (132609 source, 122456 target) ; Learning rate = 0.000162 ; Loss = 2.517103
+INFO:tensorflow:Step = 296900 ; steps/s = 3.91, tokens/s = 255065 (132609 source, 122456 target) ; Learning rate = 0.000162 ; Loss = 2.517103
+2023-05-19 02:08:02.204000: I runner.py:309] Step = 297000 ; steps/s = 3.91, tokens/s = 255090 (132631 source, 122459 target) ; Learning rate = 0.000162 ; Loss = 2.684128
+INFO:tensorflow:Step = 297000 ; steps/s = 3.91, tokens/s = 255090 (132631 source, 122459 target) ; Learning rate = 0.000162 ; Loss = 2.684128
+2023-05-19 02:08:28.038622: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 4842024 of 10041133
+2023-05-19 02:08:38.038629: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:392] Filling up shuffle buffer (this may take a while): 9173707 of 10041133
+2023-05-19 02:08:40.384074: I tensorflow/core/kernels/data/shuffle_dataset_op.cc:417] Shuffle buffer filled.
+2023-05-19 02:08:47.414000: I runner.py:309] Step = 297100 ; steps/s = 2.21, tokens/s = 139656 (72799 source, 66857 target) ; Learning rate = 0.000162 ; Loss = 2.465512
+INFO:tensorflow:Step = 297100 ; steps/s = 2.21, tokens/s = 139656 (72799 source, 66857 target) ; Learning rate = 0.000162 ; Loss = 2.465512
+2023-05-19 02:09:13.154000: I runner.py:309] Step = 297200 ; steps/s = 3.89, tokens/s = 253558 (131725 source, 121833 target) ; Learning rate = 0.000162 ; Loss = 2.516067
+INFO:tensorflow:Step = 297200 ; steps/s = 3.89, tokens/s = 253558 (131725 source, 121833 target) ; Learning rate = 0.000162 ; Loss = 2.516067
+2023-05-19 02:09:38.976000: I runner.py:309] Step = 297300 ; steps/s = 3.87, tokens/s = 252526 (131294 source, 121232 target) ; Learning rate = 0.000162 ; Loss = 2.666668
+INFO:tensorflow:Step = 297300 ; steps/s = 3.87, tokens/s = 252526 (131294 source, 121232 target) ; Learning rate = 0.000162 ; Loss = 2.666668
+2023-05-19 02:10:04.927000: I runner.py:309] Step = 297400 ; steps/s = 3.85, tokens/s = 251349 (130709 source, 120640 target) ; Learning rate = 0.000162 ; Loss = 2.664710
+INFO:tensorflow:Step = 297400 ; steps/s = 3.85, tokens/s = 251349 (130709 source, 120640 target) ; Learning rate = 0.000162 ; Loss = 2.664710
+2023-05-19 02:10:30.858000: I runner.py:309] Step = 297500 ; steps/s = 3.86, tokens/s = 251444 (130829 source, 120615 target) ; Learning rate = 0.000162 ; Loss = 2.587538
+INFO:tensorflow:Step = 297500 ; steps/s = 3.86, tokens/s = 251444 (130829 source, 120615 target) ; Learning rate = 0.000162 ; Loss = 2.587538
+2023-05-19 02:10:56.671000: I runner.py:309] Step = 297600 ; steps/s = 3.88, tokens/s = 252606 (131431 source, 121175 target) ; Learning rate = 0.000162 ; Loss = 2.587570
+INFO:tensorflow:Step = 297600 ; steps/s = 3.88, tokens/s = 252606 (131431 source, 121175 target) ; Learning rate = 0.000162 ; Loss = 2.587570
+2023-05-19 02:11:22.552000: I runner.py:309] Step = 297700 ; steps/s = 3.86, tokens/s = 251824 (130974 source, 120850 target) ; Learning rate = 0.000162 ; Loss = 2.578186
+INFO:tensorflow:Step = 297700 ; steps/s = 3.86, tokens/s = 251824 (130974 source, 120850 target) ; Learning rate = 0.000162 ; Loss = 2.578186
+2023-05-19 02:11:48.150000: I runner.py:309] Step = 297800 ; steps/s = 3.91, tokens/s = 254727 (132480 source, 122247 target) ; Learning rate = 0.000162 ; Loss = 2.449869
+INFO:tensorflow:Step = 297800 ; steps/s = 3.91, tokens/s = 254727 (132480 source, 122247 target) ; Learning rate = 0.000162 ; Loss = 2.449869
+2023-05-19 02:12:13.983000: I runner.py:309] Step = 297900 ; steps/s = 3.87, tokens/s = 252297 (131283 source, 121014 target) ; Learning rate = 0.000162 ; Loss = 2.543073
+INFO:tensorflow:Step = 297900 ; steps/s = 3.87, tokens/s = 252297 (131283 source, 121014 target) ; Learning rate = 0.000162 ; Loss = 2.543073
+2023-05-19 02:12:39.719000: I runner.py:309] Step = 298000 ; steps/s = 3.89, tokens/s = 253296 (131736 source, 121560 target) ; Learning rate = 0.000162 ; Loss = 2.527745
+INFO:tensorflow:Step = 298000 ; steps/s = 3.89, tokens/s = 253296 (131736 source, 121560 target) ; Learning rate = 0.000162 ; Loss = 2.527745
+2023-05-19 02:13:05.335000: I runner.py:309] Step = 298100 ; steps/s = 3.90, tokens/s = 254341 (132356 source, 121985 target) ; Learning rate = 0.000162 ; Loss = 2.437581
+INFO:tensorflow:Step = 298100 ; steps/s = 3.90, tokens/s = 254341 (132356 source, 121985 target) ; Learning rate = 0.000162 ; Loss = 2.437581
+2023-05-19 02:13:31.124000: I runner.py:309] Step = 298200 ; steps/s = 3.88, tokens/s = 252977 (131435 source, 121542 target) ; Learning rate = 0.000162 ; Loss = 2.716143
+INFO:tensorflow:Step = 298200 ; steps/s = 3.88, tokens/s = 252977 (131435 source, 121542 target) ; Learning rate = 0.000162 ; Loss = 2.716143
+2023-05-19 02:13:56.979000: I runner.py:309] Step = 298300 ; steps/s = 3.87, tokens/s = 252128 (131137 source, 120991 target) ; Learning rate = 0.000162 ; Loss = 2.541562
+INFO:tensorflow:Step = 298300 ; steps/s = 3.87, tokens/s = 252128 (131137 source, 120991 target) ; Learning rate = 0.000162 ; Loss = 2.541562
+2023-05-19 02:14:22.821000: I runner.py:309] Step = 298400 ; steps/s = 3.87, tokens/s = 252262 (131231 source, 121031 target) ; Learning rate = 0.000162 ; Loss = 2.575703
+INFO:tensorflow:Step = 298400 ; steps/s = 3.87, tokens/s = 252262 (131231 source, 121031 target) ; Learning rate = 0.000162 ; Loss = 2.575703
+2023-05-19 02:14:48.443000: I runner.py:309] Step = 298500 ; steps/s = 3.90, tokens/s = 254331 (132352 source, 121979 target) ; Learning rate = 0.000162 ; Loss = 2.523045
+INFO:tensorflow:Step = 298500 ; steps/s = 3.90, tokens/s = 254331 (132352 source, 121979 target) ; Learning rate = 0.000162 ; Loss = 2.523045
+2023-05-19 02:15:14.175000: I runner.py:309] Step = 298600 ; steps/s = 3.89, tokens/s = 253441 (131693 source, 121748 target) ; Learning rate = 0.000162 ; Loss = 2.545695
+INFO:tensorflow:Step = 298600 ; steps/s = 3.89, tokens/s = 253441 (131693 source, 121748 target) ; Learning rate = 0.000162 ; Loss = 2.545695
+2023-05-19 02:15:40.032000: I runner.py:309] Step = 298700 ; steps/s = 3.87, tokens/s = 252130 (131132 source, 120998 target) ; Learning rate = 0.000162 ; Loss = 2.602924
+INFO:tensorflow:Step = 298700 ; steps/s = 3.87, tokens/s = 252130 (131132 source, 120998 target) ; Learning rate = 0.000162 ; Loss = 2.602924
+2023-05-19 02:16:05.821000: I runner.py:309] Step = 298800 ; steps/s = 3.88, tokens/s = 252762 (131489 source, 121273 target) ; Learning rate = 0.000162 ; Loss = 2.513520
+INFO:tensorflow:Step = 298800 ; steps/s = 3.88, tokens/s = 252762 (131489 source, 121273 target) ; Learning rate = 0.000162 ; Loss = 2.513520
+2023-05-19 02:16:31.626000: I runner.py:309] Step = 298900 ; steps/s = 3.88, tokens/s = 252497 (131447 source, 121050 target) ; Learning rate = 0.000162 ; Loss = 2.555359
+INFO:tensorflow:Step = 298900 ; steps/s = 3.88, tokens/s = 252497 (131447 source, 121050 target) ; Learning rate = 0.000162 ; Loss = 2.555359
+2023-05-19 02:16:57.327000: I runner.py:309] Step = 299000 ; steps/s = 3.89, tokens/s = 253649 (131938 source, 121711 target) ; Learning rate = 0.000162 ; Loss = 2.712624
+INFO:tensorflow:Step = 299000 ; steps/s = 3.89, tokens/s = 253649 (131938 source, 121711 target) ; Learning rate = 0.000162 ; Loss = 2.712624
+2023-05-19 02:17:23.123000: I runner.py:309] Step = 299100 ; steps/s = 3.88, tokens/s = 252737 (131493 source, 121244 target) ; Learning rate = 0.000162 ; Loss = 2.564622
+INFO:tensorflow:Step = 299100 ; steps/s = 3.88, tokens/s = 252737 (131493 source, 121244 target) ; Learning rate = 0.000162 ; Loss = 2.564622
+2023-05-19 02:17:48.640000: I runner.py:309] Step = 299200 ; steps/s = 3.92, tokens/s = 255568 (132888 source, 122680 target) ; Learning rate = 0.000162 ; Loss = 2.628550
+INFO:tensorflow:Step = 299200 ; steps/s = 3.92, tokens/s = 255568 (132888 source, 122680 target) ; Learning rate = 0.000162 ; Loss = 2.628550
+2023-05-19 02:18:14.282000: I runner.py:309] Step = 299300 ; steps/s = 3.90, tokens/s = 254273 (132242 source, 122031 target) ; Learning rate = 0.000162 ; Loss = 2.534368
+INFO:tensorflow:Step = 299300 ; steps/s = 3.90, tokens/s = 254273 (132242 source, 122031 target) ; Learning rate = 0.000162 ; Loss = 2.534368
+2023-05-19 02:18:39.999000: I runner.py:309] Step = 299400 ; steps/s = 3.89, tokens/s = 253364 (131901 source, 121463 target) ; Learning rate = 0.000162 ; Loss = 2.566420
+INFO:tensorflow:Step = 299400 ; steps/s = 3.89, tokens/s = 253364 (131901 source, 121463 target) ; Learning rate = 0.000162 ; Loss = 2.566420
+2023-05-19 02:19:05.837000: I runner.py:309] Step = 299500 ; steps/s = 3.87, tokens/s = 252257 (131215 source, 121042 target) ; Learning rate = 0.000162 ; Loss = 2.651761
+INFO:tensorflow:Step = 299500 ; steps/s = 3.87, tokens/s = 252257 (131215 source, 121042 target) ; Learning rate = 0.000162 ; Loss = 2.651761
+2023-05-19 02:19:31.670000: I runner.py:309] Step = 299600 ; steps/s = 3.87, tokens/s = 252365 (131263 source, 121102 target) ; Learning rate = 0.000161 ; Loss = 2.594589
+INFO:tensorflow:Step = 299600 ; steps/s = 3.87, tokens/s = 252365 (131263 source, 121102 target) ; Learning rate = 0.000161 ; Loss = 2.594589
+2023-05-19 02:19:57.484000: I runner.py:309] Step = 299700 ; steps/s = 3.87, tokens/s = 252579 (131296 source, 121283 target) ; Learning rate = 0.000161 ; Loss = 2.613218
+INFO:tensorflow:Step = 299700 ; steps/s = 3.87, tokens/s = 252579 (131296 source, 121283 target) ; Learning rate = 0.000161 ; Loss = 2.613218
+2023-05-19 02:20:23.328000: I runner.py:309] Step = 299800 ; steps/s = 3.87, tokens/s = 252045 (131211 source, 120834 target) ; Learning rate = 0.000161 ; Loss = 2.511041
+INFO:tensorflow:Step = 299800 ; steps/s = 3.87, tokens/s = 252045 (131211 source, 120834 target) ; Learning rate = 0.000161 ; Loss = 2.511041
+2023-05-19 02:20:48.978000: I runner.py:309] Step = 299900 ; steps/s = 3.90, tokens/s = 254175 (132114 source, 122061 target) ; Learning rate = 0.000161 ; Loss = 2.525614
+INFO:tensorflow:Step = 299900 ; steps/s = 3.90, tokens/s = 254175 (132114 source, 122061 target) ; Learning rate = 0.000161 ; Loss = 2.525614
+2023-05-19 02:21:14.758000: I runner.py:309] Step = 300000 ; steps/s = 3.88, tokens/s = 252901 (131574 source, 121327 target) ; Learning rate = 0.000161 ; Loss = 2.562830
+INFO:tensorflow:Step = 300000 ; steps/s = 3.88, tokens/s = 252901 (131574 source, 121327 target) ; Learning rate = 0.000161 ; Loss = 2.562830
+2023-05-19 02:21:18.239000: I training.py:176] Saved checkpoint run/ckpt-300000
+INFO:tensorflow:Saved checkpoint run/ckpt-300000
+2023-05-19 02:21:18.239000: I training.py:192] Running evaluation for step 300000
+INFO:tensorflow:Running evaluation for step 300000
+2023-05-19 03:09:27.213000: I training.py:192] Evaluation predictions saved to run/eval/predictions.txt.300000
+INFO:tensorflow:Evaluation predictions saved to run/eval/predictions.txt.300000
+2023-05-19 03:10:47.284000: I training.py:192] Evaluation result for step 300000: loss = 1.413321 ; perplexity = 4.109582 ; bleu = 38.413332
+INFO:tensorflow:Evaluation result for step 300000: loss = 1.413321 ; perplexity = 4.109582 ; bleu = 38.413332
+2023-05-19 03:10:47.302000: W training.py:193] Evaluation metric 'bleu' did not improve more than 0.010000 in the last 4 evaluations
+WARNING:tensorflow:Evaluation metric 'bleu' did not improve more than 0.010000 in the last 4 evaluations
+2023-05-19 03:10:47.305000: W runner.py:309] Early stopping conditions are met. Exiting.
+WARNING:tensorflow:Early stopping conditions are met. Exiting.
+2023-05-19 03:10:55.894000: W runner.py:309] 0.000% of source tokens are out of vocabulary (117 out of 847095120 tokens)
+WARNING:tensorflow:0.000% of source tokens are out of vocabulary (117 out of 847095120 tokens)
+2023-05-19 03:10:55.894000: I runner.py:309] The 10 most frequent out of vocabulary source tokens are: 특 (4.3%); 풀 (4.3%); 킷 (4.3%); 퀸 (4.3%); 헐 (4.3%); 캄 (4.3%); 훌 (4.3%); 헬 (4.3%); 펀 (4.3%); 표 (4.3%)
+INFO:tensorflow:The 10 most frequent out of vocabulary source tokens are: 특 (4.3%); 풀 (4.3%); 킷 (4.3%); 퀸 (4.3%); 헐 (4.3%); 캄 (4.3%); 훌 (4.3%); 헬 (4.3%); 펀 (4.3%); 표 (4.3%)
+2023-05-19 03:10:55.895000: W runner.py:309] 0.000% of target tokens are out of vocabulary (35 out of 736041795 tokens)
+WARNING:tensorflow:0.000% of target tokens are out of vocabulary (35 out of 736041795 tokens)
+2023-05-19 03:10:55.895000: I runner.py:309] The 8 most frequent out of vocabulary target tokens are: 󕇑 (14.3%);  (14.3%);  (14.3%);  (11.4%);  (11.4%);  (11.4%);  (11.4%);  (11.4%)
+INFO:tensorflow:The 8 most frequent out of vocabulary target tokens are: 󕇑 (14.3%);  (14.3%);  (14.3%);  (11.4%);  (11.4%);  (11.4%);  (11.4%);  (11.4%)
+2023-05-19 03:10:55.929000: I main.py:325] Using parameters:
+data:
+  eval_features_file: ../../data/valid.tok.en
+  eval_labels_file: ../../data/valid.tok.ko
+  source_vocabulary: ../../data/spenD.onmt.vocab
+  target_vocabulary: ../../data/spkoD.onmt.vocab
+  train_features_file: ../../data/train.tok.en
+  train_labels_file: ../../data/train.tok.ko
+eval:
+  batch_size: 32
+  batch_type: examples
+  early_stopping:
+    metric: bleu
+    min_improvement: 0.01
+    steps: 4
+  export_format: saved_model
+  export_on_best: bleu
+  length_bucket_width: 5
+  scorers: bleu
+infer:
+  batch_size: 32
+  batch_type: examples
+  length_bucket_width: 5
+model_dir: run/
+params:
+  average_loss_in_time: true
+  beam_width: 4
+  decay_params:
+    model_dim: 512
+    warmup_steps: 8000
+  decay_type: NoamDecay
+  label_smoothing: 0.1
+  learning_rate: 2.0
+  num_hypotheses: 1
+  optimizer: LazyAdam
+  optimizer_params:
+    beta_1: 0.9
+    beta_2: 0.998
+score:
+  batch_size: 64
+  batch_type: examples
+  length_bucket_width: 5
+train:
+  average_last_checkpoints: 8
+  batch_size: 3072
+  batch_type: tokens
+  effective_batch_size: 25000
+  keep_checkpoint_max: 8
+  length_bucket_width: 2
+  max_step: 500000
+  maximum_features_length: 150
+  maximum_labels_length: 150
+  sample_buffer_size: -1
+  save_summary_steps: 100
+
+INFO:tensorflow:Using parameters:
+data:
+  eval_features_file: ../../data/valid.tok.en
+  eval_labels_file: ../../data/valid.tok.ko
+  source_vocabulary: ../../data/spenD.onmt.vocab
+  target_vocabulary: ../../data/spkoD.onmt.vocab
+  train_features_file: ../../data/train.tok.en
+  train_labels_file: ../../data/train.tok.ko
+eval:
+  batch_size: 32
+  batch_type: examples
+  early_stopping:
+    metric: bleu
+    min_improvement: 0.01
+    steps: 4
+  export_format: saved_model
+  export_on_best: bleu
+  length_bucket_width: 5
+  scorers: bleu
+infer:
+  batch_size: 32
+  batch_type: examples
+  length_bucket_width: 5
+model_dir: run/
+params:
+  average_loss_in_time: true
+  beam_width: 4
+  decay_params:
+    model_dim: 512
+    warmup_steps: 8000
+  decay_type: NoamDecay
+  label_smoothing: 0.1
+  learning_rate: 2.0
+  num_hypotheses: 1
+  optimizer: LazyAdam
+  optimizer_params:
+    beta_1: 0.9
+    beta_2: 0.998
+score:
+  batch_size: 64
+  batch_type: examples
+  length_bucket_width: 5
+train:
+  average_last_checkpoints: 8
+  batch_size: 3072
+  batch_type: tokens
+  effective_batch_size: 25000
+  keep_checkpoint_max: 8
+  length_bucket_width: 2
+  max_step: 500000
+  maximum_features_length: 150
+  maximum_labels_length: 150
+  sample_buffer_size: -1
+  save_summary_steps: 100
+
+2023-05-19 03:10:56.093000: I inputter.py:316] Initialized source input layer:
+INFO:tensorflow:Initialized source input layer:
+2023-05-19 03:10:56.094000: I inputter.py:316]  - vocabulary size: 32001
+INFO:tensorflow: - vocabulary size: 32001
+2023-05-19 03:10:56.094000: I inputter.py:316]  - special tokens: BOS=no, EOS=no
+INFO:tensorflow: - special tokens: BOS=no, EOS=no
+2023-05-19 03:10:56.167000: I inputter.py:316] Initialized target input layer:
+INFO:tensorflow:Initialized target input layer:
+2023-05-19 03:10:56.167000: I inputter.py:316]  - vocabulary size: 32001
+INFO:tensorflow: - vocabulary size: 32001
+2023-05-19 03:10:56.167000: I inputter.py:316]  - special tokens: BOS=yes, EOS=yes
+INFO:tensorflow: - special tokens: BOS=yes, EOS=yes
+2023-05-19 03:10:56.286000: I runner.py:382] Restored checkpoint run/ckpt-300000
+INFO:tensorflow:Restored checkpoint run/ckpt-300000
+2023-05-19 03:10:58.613000: I runner.py:385] Averaging 8 checkpoints...
+INFO:tensorflow:Averaging 8 checkpoints...
+2023-05-19 03:10:58.613000: I runner.py:385] Reading checkpoint run/ckpt-265000...
+INFO:tensorflow:Reading checkpoint run/ckpt-265000...
+2023-05-19 03:11:00.374000: I runner.py:385] Reading checkpoint run/ckpt-270000...
+INFO:tensorflow:Reading checkpoint run/ckpt-270000...
+2023-05-19 03:11:02.520000: I runner.py:385] Reading checkpoint run/ckpt-275000...
+INFO:tensorflow:Reading checkpoint run/ckpt-275000...
+2023-05-19 03:11:02.931000: I runner.py:385] Reading checkpoint run/ckpt-280000...
+INFO:tensorflow:Reading checkpoint run/ckpt-280000...
+2023-05-19 03:11:04.705000: I runner.py:385] Reading checkpoint run/ckpt-285000...
+INFO:tensorflow:Reading checkpoint run/ckpt-285000...
+2023-05-19 03:11:06.881000: I runner.py:385] Reading checkpoint run/ckpt-290000...
+INFO:tensorflow:Reading checkpoint run/ckpt-290000...
+2023-05-19 03:11:08.972000: I runner.py:385] Reading checkpoint run/ckpt-295000...
+INFO:tensorflow:Reading checkpoint run/ckpt-295000...
+2023-05-19 03:11:09.563000: I runner.py:385] Reading checkpoint run/ckpt-300000...
+INFO:tensorflow:Reading checkpoint run/ckpt-300000...
+2023-05-19 03:11:14.502000: I runner.py:385] Saved averaged checkpoint to run/avg/ckpt-300000
+INFO:tensorflow:Saved averaged checkpoint to run/avg/ckpt-300000
+:: End ::
